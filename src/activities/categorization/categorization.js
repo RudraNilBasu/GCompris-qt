@@ -141,6 +141,8 @@ function initLevel() {
     items.categoryReview.score.currentSubLevel = 0;
     getCategoryLevels(index);
     numberOfLevel = items.details.length;
+    items.categoryReview.leftZone.clear();
+    items.categoryReview.rightZone.clear();
     items.categoryReview.start();
     items.menuScreen.stop()
 }

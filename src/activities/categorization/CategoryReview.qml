@@ -35,12 +35,23 @@ Item {
     property bool rightAreaContainsDrag: false
     property bool started: rootItem.opacity == 1
     property bool horizontalLayout: categoryBackground.width > categoryBackground.height
-
+    property alias leftZoneModel: leftZoneModel
+    property alias leftZone: leftZone
+    property alias rightZone: rightZone
+    property alias rightZoneModel: rightZoneModel
     anchors.fill: parent
 
     Loader {
         id: categoryDataset
         asynchronous: false
+    }
+
+   ListModel {
+        id: leftZone
+    }
+
+   ListModel {
+        id: rightZone
     }
 
     Image {
@@ -49,15 +60,38 @@ Item {
         anchors.fill: parent
         sourceSize.width:parent.width
 
+      GridView {
+          id:leftZoneModel
+          width: parent.width/3
+          height: parent.height
+          cellWidth: middleScreen.width*0.40
+          cellHeight: categoryBackground.height * 0.2
+          model: leftZone
+          delegate:
+          Zone { }
         Rectangle {
             id: leftScreen
-            width: parent.width/3
-            height: parent.height
-            anchors.left: parent.left
+            anchors.fill: leftZoneModel
             color: leftAreaContainsDrag ? "#9933FF" : "red"
             opacity: 0.52
         }
+      }
 
+      GridView {
+          id: rightZoneModel
+          width: parent.width/3.2
+          height: parent.height
+          anchors.right: parent.right
+          anchors.bottom: categoryBackground.bottom
+          anchors.top: categoryBackground.top
+          anchors.topMargin: items.mode === "easy" ? 0.2 * categoryBackground.height : ''
+          cellWidth: middleScreen.width*0.40
+          cellHeight: categoryBackground.height * 0.2
+          model: rightZone
+          delegate:
+          Zone { }
+      }
+      
         Rectangle {
             id: rightScreen
             width: parent.width/3.2
@@ -68,11 +102,10 @@ Item {
             color: rightAreaContainsDrag ? "#FFCC00" : "green"
             opacity: 0.47
         }
-
         Rectangle {
             id: middleScreen
-            anchors.left: leftScreen.right
-            anchors.right: rightScreen.left
+            anchors.left: leftZoneModel.right
+            anchors.right: rightZoneModel.left
             color: "#00FFFFFF"
             width: parent.width/3
             height: parent.height
@@ -80,9 +113,9 @@ Item {
 
         Rectangle {
             id: instructionBox
-            anchors.left: score.right
+            anchors.left: categoryBackground.left
             anchors.right: categoryimage.left
-            anchors.leftMargin: 0.1 * parent.width
+            anchors.leftMargin: 0.32 * parent.width
             anchors.rightMargin: 0.03 * parent.width
             color: "black"
             opacity: items.instructionsChecked ? 0.85 : 0
@@ -102,8 +135,8 @@ Item {
             id: options
             spacing: 0.012 * middleScreen.width
             anchors {
-                left: leftScreen.right
-                right: rightScreen.left
+                left: leftZoneModel.right
+                right: rightZoneModel.left
                 top: parent.top
                 topMargin: 0.05 * parent.height
                 bottom: categoryBackground.bottom
@@ -157,10 +190,14 @@ Item {
                                 return;
                             //Drag.drop();
                             if(leftAreaContainsDrag) {
+                                leftZone.append({ "name": image.source.toString() })
+                                image.source = ""
                                 item.droppedPosition = "left"
                                 activity.audioEffects.play("qrc:/gcompris/src/core/resource/sounds/smudge.wav")    
                             }
                             else if(rightAreaContainsDrag) {
+                                rightZone.append({name: image.source.toString()})
+                                image.source = ""
                                 item.droppedPosition = "right"
                                 activity.audioEffects.play("qrc:/gcompris/src/core/resource/sounds/smudge.wav")
                             }
@@ -194,21 +231,21 @@ Item {
         Image {
             id:categoryimage
             source: items.details ? items.details[bar.level-1].image : ""
-            width: horizontalLayout ? rightScreen.width * 0.35 : rightScreen.width * 0.35
-            height: horizontalLayout ? rightScreen.height * 0.18 : rightScreen.height * 0.15
+            width: horizontalLayout ? rightZoneModel.width * 0.35 : rightZoneModel.width * 0.35
+            height: horizontalLayout ? rightZoneModel.height * 0.18 : rightZoneModel.height * 0.15
             y: 0.015*parent.height
             visible: items.categoryImageChecked
             anchors {
                 left: middleScreen.right
-                leftMargin: 0.35 * rightScreen.width
+                leftMargin: 0.15 * rightZoneModel.width
             }
         }
 
         BarButton {
             id: validate
             source: "qrc:/gcompris/src/core/resource/bar_ok.svg"
-            width: horizontalLayout ? rightScreen.width * 0.20 : rightScreen.width * 0.35
-            height: horizontalLayout ? rightScreen.width * 0.20 : rightScreen.width * 0.35
+            width: horizontalLayout ? rightZoneModel.width * 0.20 : rightZoneModel.width * 0.35
+            height: horizontalLayout ? rightZoneModel.width * 0.20 : rightZoneModel.width * 0.35
             y: parent.height*0.8
             anchors{
                 rightMargin: 14 * ApplicationInfo.ratio
@@ -225,12 +262,12 @@ Item {
 
         DropArea {
             id: rightArea
-            anchors.fill: rightScreen
+            anchors.fill: rightZoneModel
         }
 
         DropArea {
             id: leftArea
-            anchors.fill: leftScreen
+            anchors.fill: leftZoneModel
         }
 
         DialogHelp {
@@ -246,9 +283,8 @@ Item {
             width: horizontalLayout ? 0.015 * parent.width : parent.width
             anchors {
                 top: parent.top
-                right: middleScreen.left
-                rightMargin: horizontalLayout ? 0.2 * parent.width : 0.15 * parent.width
-                left: parent.left
+                right: categoryBackground.right
+                left: categoryimage.right
                 bottom: undefined
             }    
         }

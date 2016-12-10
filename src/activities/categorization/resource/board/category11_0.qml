@@ -37,8 +37,8 @@ QtObject{
                     "maxNumberOfGood": 5,
                     "maxNumberOfBad": 4,
                     "prefix": "qrc:/gcompris/data/words/",
-                    "levelImages": [ 
-                        {             
+                    "levelImages": [
+                        {
                             "shapes/cd.svg": ["circle"],
                             "shapes/clock.svg": ["circle"],
                             "shapes/coin.svg": ["circle"],
@@ -50,8 +50,7 @@ QtObject{
                             "shapes/conehat.svg": ["cone"]
                         }
                     ]
-                    
-                }, 
+                },
                 {
                     "tags": ["rectangle"],
                     "instructions": qsTr("Place the objects matching RECTANGLE to right and others to the left"),
@@ -65,7 +64,7 @@ QtObject{
                             "shapes/rectangle_led.svg": ["rectangle"],
                             "shapes/backcard.svg": ["rectangle"],
                             "shapes/slate.svg": ["rectangle"],
-                            "shapes/diceface.svg": ["rectangle"], 
+                            "shapes/diceface.svg": ["rectangle"],
                             "shapes/icecream.svg": ["cone"],
                             "shapes/icecube.svg": ["cube"],
                             "shapes/juice1.svg": ["cuboid"],
@@ -82,7 +81,7 @@ QtObject{
                     "prefix": "qrc:/gcompris/data/words/",
                     "levelImages": [
                         {
-                            "shapes/halforange.svg": ["hemisphere"], 
+                            "shapes/halforange.svg": ["hemisphere"],
                             "shapes/bowl.svg": ["hemisphere"],
                             "shapes/bowl1.svg": ["hemisphere"],
                             "shapes/bowl2.svg": ["hemisphere"],
@@ -93,7 +92,7 @@ QtObject{
                             "shapes/icecube.svg": ["cube"]
                         }
                     ]
-                }, 
+                },
                 {
                     "tags": ["trapezium"],
                     "instructions": qsTr("Place the objects matching TRAPEZIUM to right and others to the left"),
@@ -111,9 +110,9 @@ QtObject{
                             "shapes/pgram2.svg": ["parallelogram"],
                             "shapes/icecube.svg": ["cube"],
                             "shapes/juice1.svg": ["cuboid"],
-                            "shapes/square.png":["square"], 
+                            "shapes/square.png":["square"],
                         }
-                    ] 
+                    ]
                 },
                 {
                     "tags": ["triangle"],
@@ -122,7 +121,7 @@ QtObject{
                     "maxNumberOfGood": 4,
                     "maxNumberOfBad": 5,
                     "prefix": "qrc:/gcompris/data/words/",
-                    "levelImages": [ 
+                    "levelImages": [
                         {
                             "shapes/pizza.svg": ["triangle"],
                             "shapes/trianglehat.svg": ["triangle"],
@@ -133,9 +132,9 @@ QtObject{
                             "words/tape_measure.png":["cuboid"],
                             "shapes/trapezium1.svg": ["trapezium"],
                             "shapes/rainbowsquare.svg": ["square"]
-                        }   
+                        }
                     ]
-                }, 
+                },
                 {
                     "tags": ["semicircle"],
                     "instructions": qsTr("Place the objects matching SEMICIRCLE to right and others to the left"),
@@ -143,20 +142,20 @@ QtObject{
                     "maxNumberOfGood": 4,
                     "maxNumberOfBad": 5,
                     "prefix": "qrc:/gcompris/data/words/",
-                    "levelImages": [ 
+                    "levelImages": [
                         {
-                            "shapes/fan.svg": ["semicircle"],	    
-                            "shapes/halfmoon.svg": ["semicircle"],  
+                            "shapes/fan.svg": ["semicircle"],
+                            "shapes/halfmoon.svg": ["semicircle"],
                             "shapes/sunrise.svg": ["semicircle"],
                             "shapes/rainbow.svg": ["semicircle"],
-                            "shapes/diceface.svg": ["rectangle"], 		      
+                            "shapes/diceface.svg": ["rectangle"],
                             "shapes/tin.png":["cylinder"],
                             "shapes/torch.png":["cone"],
                             "shapes/trianglehat.svg":["triangle"],
                             "words/trap.png":["cuboid"]
                         }
                     ]
-                },  
+                },
                 {
                     "tags": ["pentagon"],
                     "instructions": qsTr("Place the objects matching PENTAGON to right and others to the left"),
@@ -176,8 +175,8 @@ QtObject{
                             "shapes/paper.svg": ["rectangle"],
                             "shapes/hexagon1.svg": ["hexagon"]
                         }
-                    ] 
-                }, 
+                    ]
+                },
                 {
                     "tags": ["square"],
                     "instructions": qsTr("Place the objects matching SQUARE to right and others to the left"),
@@ -185,20 +184,20 @@ QtObject{
                     "maxNumberOfGood": 5,
                     "maxNumberOfBad": 4,
                     "prefix": "qrc:/gcompris/data/words/",
-                    "levelImages": [ 
-                        {	    
+                    "levelImages": [
+                        {
                             "shapes/rsquare.svg": ["square"],
                             "shapes/rainbowsquare.svg": ["square"],
                             "shapes/square.png":["square"],
                             "shapes/squareclock.svg": ["square"],
-                            "shapes/stickynote.svg": ["square"],  
+                            "shapes/stickynote.svg": ["square"],
                             "shapes/shapes.png":["cube"],
                             "shapes/slate.svg": ["rectangle"],
                             "words/glass.png":["cylinder"],
                             "shapes/globe.svg": ["circle"]
                         }
                     ]
-                },  
+                },
                 {
                     "tags": ["cone"],
                     "instructions": qsTr("Place the objects matching CONE to right and others to the left"),
@@ -219,7 +218,7 @@ QtObject{
                             "shapes/glass.svg": ["cylinder"],
                             "shapes/sugar.png":["cube"],
                             "words/book.png": ["cuboid"],
-                            "shapes/dice.svg": ["cube"]   
+                            "shapes/dice.svg": ["cube"]
                         }
                     ]
                 },
@@ -242,8 +241,8 @@ QtObject{
                             "rectangle_led.svg": ["rectangle"],
                             "rhombus4.svg": ["rhombus"]
                         }
-                    ]        
-                }, 
+                    ]
+                },
                 {
                     "tags": ["heptagon"],
                     "instructions": qsTr("Place the objects matching HEPTAGON to right and others to the left"),
@@ -263,8 +262,8 @@ QtObject{
                             "pentagon1.svg": ["pentagon"],
                             "hexagon4.svg": ["hexagon"]
                         }
-                    ] 
-                },  
+                    ]
+                },
                 {
                     "tags": ["cube"],
                     "instructions": qsTr("Place the objects matching CUBE to right and others to the left"),
@@ -296,14 +295,14 @@ QtObject{
                     "maxNumberOfGood": 4,
                     "maxNumberOfBad": 5,
                     "prefix": "qrc:/gcompris/data/words/shapes/",
-                    "levelImages": [ 
+                    "levelImages": [
                         {
                             "rhombus1.svg": ["rhombus"],
                             "rhombus2.svg": ["rhombus"],
                             "rhombus3.svg": ["rhombus"],
                             "rhombus4.svg": ["rhombus"],
                             "squareclock.svg": ["square"],
-                            "stickynote.svg": ["square"], 
+                            "stickynote.svg": ["square"],
                             "backcard.svg": ["rectangle"],
                             "pgram1.svg": ["parallelogram"],
                             "diceface.svg": ["rectangle"]
@@ -317,20 +316,20 @@ QtObject{
                     "maxNumberOfGood": 4,
                     "maxNumberOfBad": 5,
                     "prefix": "qrc:/gcompris/data/words/shapes/",
-                    "levelImages": [ 
+                    "levelImages": [
                         {
                             "nonagon1.svg": ["nonagon"],
                             "nonagon4.svg": ["nonagon"],
                             "nonagon2.svg": ["nonagon"],
                             "nonagon3.svg": ["nonagon"],
                             "pgram2.svg": ["parallelogram"],
-                            "diceface.svg": ["rectangle"], 
+                            "diceface.svg": ["rectangle"],
                             "octagon2.svg": ["octagon"],
                             "decagon1.svg": ["decagon"],
                             "decagon2.svg": ["decagon"]
                         }
-                    ] 
-                }, 
+                    ]
+                },
                 {
                     "tags": ["cuboid"],
                     "instructions": qsTr("Place the objects matching CUBOID to right and others to the left"),
@@ -351,7 +350,7 @@ QtObject{
                             "shapes/rectangle_led.svg": ["rectangle"],
                             "shapes/slate.svg": ["rectangle"],
                             "shapes/rsquare.svg": ["square"],
-                            "shapes/rainbowsquare.svg": ["square"]      
+                            "shapes/rainbowsquare.svg": ["square"] 
                         }
                     ]
                 },
@@ -362,7 +361,7 @@ QtObject{
                     "maxNumberOfGood": 4,
                     "maxNumberOfBad": 5,
                     "prefix": "qrc:/gcompris/data/words/shapes/",
-                    "levelImages": [ 
+                    "levelImages": [
                         {
                             "hexagon2.svg": ["hexagon"],
                             "hexagon3.svg": ["hexagon"],
@@ -374,7 +373,7 @@ QtObject{
                             "pentagon3.svg": ["pentagon"],
                             "trapezium2.svg": ["trapezium"]
                         }
-                    ] 
+                    ]
                 },
                 {
                     "tags": ["octagon"],
@@ -383,7 +382,7 @@ QtObject{
                     "maxNumberOfGood": 4,
                     "maxNumberOfBad": 5,
                     "prefix": "qrc:/gcompris/data/words/shapes/",
-                    "levelImages": [ 
+                    "levelImages": [
                         {
                             "octagon2.svg": ["octagon"],
                             "octagon3.svg": ["octagon"],
@@ -395,7 +394,7 @@ QtObject{
                             "heptagon1.svg": ["heptagon"],
                             "nonagon2.svg": ["nonagon"]
                         }
-                    ] 
+                    ]
                 },
                 {
                     "tags": ["cylinder"],
@@ -413,7 +412,7 @@ QtObject{
                             "shapes/can.svg": ["cylinder"],
                             "shapes/gascylinder.svg": ["cylinder"],
                             "shapes/glass.svg": ["cylinder"],
-                            "shapes/halforange.svg": ["hemisphere"], 
+                            "shapes/halforange.svg": ["hemisphere"],
                             "words/radio.png":["cuboid"],
                             "shapes/sugar.png":["cube"],
                             "shapes/ice_cream.png":["cone"],

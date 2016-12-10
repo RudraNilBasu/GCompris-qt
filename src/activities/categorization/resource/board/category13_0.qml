@@ -36,7 +36,7 @@ QtObject{
                     "maxNumberOfBad": 6,
                     "prefix": "qrc:/gcompris/data/words/",
                     "levelImages": [
-                        { 
+                        {
                             "insects/insect1.jpg":["insects"],
                             "insects/insect2.jpg":["insects"],
                             "insects/insect3.jpg":["insects"],
@@ -125,8 +125,8 @@ QtObject{
                     "maxNumberOfGood": 3,
                     "maxNumberOfBad": 3,
                     "prefix": "qrc:/gcompris/data/words/",
-                    "levelImages": [ 
-                        { 
+                    "levelImages": [
+                        {
                             "insects/insect23.jpg":["insects"],
                             "insects/insect24.jpg":["insects"],
                             "insects/insect25.jpg":["insects"],
@@ -143,8 +143,8 @@ QtObject{
                     "maxNumberOfGood": 3,
                     "maxNumberOfBad": 3,
                     "prefix": "qrc:/gcompris/data/words/",
-                    "levelImages": [ 
-                        {  
+                    "levelImages": [
+                        {
                             "insects/insect26.jpg":["insects"],
                             "insects/insect27.jpg":["insects"],
                             "insects/insect12.jpg":["insects"],
@@ -155,7 +155,6 @@ QtObject{
                     ]
                 }
             ]
-            
         }
     ]
 }

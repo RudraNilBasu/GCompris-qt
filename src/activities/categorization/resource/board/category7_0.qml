@@ -42,7 +42,7 @@ QtObject{
                             "fruits/banana.jpg":["fruits"],
                             "fruits/berries.jpg":["fruits"],
                             "fruits/billberries.jpg":["fruits"],
-                            "fruits/cherries.jpg":["fruits"],	 
+                            "fruits/cherries.jpg":["fruits"],
                             "vegetables/batatadoce.jpg":["vegetables"],
                             "vegetables/bittergourd.jpg":["vegetables"],
                             "vegetables/blackchillies.jpg":["vegetables"],
@@ -74,7 +74,7 @@ QtObject{
                             "others/spoon.jpg":["others"],
                             "others/fork.jpg":["others"]
                         }
-                    ]   
+                    ]
                 },
                 {
                     "tags": ["fruits"],
@@ -83,7 +83,7 @@ QtObject{
                     "maxNumberOfGood": 5,
                     "maxNumberOfBad": 7,
                     "prefix": "qrc:/gcompris/data/words/",
-                    "levelImages": [ 
+                    "levelImages": [
                         {
                             "fruits/mirabellen.jpg":["fruits"],
                             "fruits/nectarine.jpg":["fruits"],
@@ -96,7 +96,7 @@ QtObject{
                             "food/macroni.jpg":["food"],
                             "food/hamburger.jpg":["food"],
                             "transport/cycle.jpg":["transport"],
-                            "transport/car1.jpg":["transport"]		    
+                            "transport/car1.jpg":["transport"]
                         }
                     ]
                 },
@@ -120,7 +120,7 @@ QtObject{
                             "food/icecream.jpg":["food"],
                         }
                     ]
-                },            
+                },         
                 {
                     "tags": ["fruits"],
                     "instructions": qsTr("Place the FRUITS to the right and other objects to the left"),
@@ -176,8 +176,8 @@ QtObject{
                             "food/hotdog.jpg":["food"],
                             "food/milk.jpg":["food"]
                         }
-                    ] 
-                }, 
+                    ]
+                },
                 {
                     "tags": ["fruits"],
                     "instructions": qsTr("Place the FRUITS to the right and other objects to the left"),
@@ -194,7 +194,7 @@ QtObject{
                             "food/cheese.jpg":["food"],
                             "food/water.jpg":["food"]
                         }
-                    ] 
+                    ]
                 }
             ]
         }

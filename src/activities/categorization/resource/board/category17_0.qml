@@ -62,7 +62,7 @@ QtObject{
                     "maxNumberOfBad": 6,
                     "prefix": "qrc:/gcompris/data/words/",
                     "levelImages": [
-                        {  
+                        {
                             "vegetables/cauliflower.jpg":["vegetables"],
                             "vegetables/chillies.jpg":["vegetables"],
                             "vegetables/chineseradish.jpg":["vegetables"],
@@ -88,7 +88,7 @@ QtObject{
                     "maxNumberOfBad": 5,
                     "prefix": "qrc:/gcompris/data/words/",
                     "levelImages": [
-                        {	  
+                        {
                             "vegetables/potato.jpg":["vegetables"],
                             "vegetables/radish.jpg":["vegetables"],
                             "vegetables/redchillies.jpg":["vegetables"],

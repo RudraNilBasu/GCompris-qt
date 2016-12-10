@@ -51,7 +51,7 @@ QtObject{
                             "fruits/apple.jpg":["fruits"]
                         }
                     ]
-                },      
+                },
                 {
                     "tags": ["householdGoods"],
                     "instructions": qsTr("Place the HOUSEHOLD GOODS to the right and other objects to the left"),
@@ -99,7 +99,7 @@ QtObject{
                             "birds/bird14.jpg": ["birds"]
                         }
                     ]
-                }, 
+                },
                 {
                     "tags": ["householdGoods"],
                     "instructions": qsTr("Place the HOUSEHOLD GOODS to the right and other objects to the left"),
@@ -123,7 +123,7 @@ QtObject{
                             "food/MaozVegetariano.jpg": ["food"]
                         }
                     ]
-                }, 
+                },
                 {
                     "tags": ["householdGoods"],
                     "instructions": qsTr("Place the HOUSEHOLD GOODS to the right and other objects to the left"),
@@ -147,7 +147,7 @@ QtObject{
                             "others/pepsi.jpg": ["others"]
                         }
                     ]
-                }, 
+                },
                 {
                     "tags": ["householdGoods"],
                     "instructions": qsTr("Place the HOUSEHOLD GOODS to the right and other objects to the left"),
@@ -189,7 +189,6 @@ QtObject{
                             "plants/tree2.jpg":["plants"]
                         }
                     ]
-                    
                 },
                 {
                     "tags": ["householdGoods"],
@@ -232,7 +231,6 @@ QtObject{
                             "others/street.jpg": ["others"]
                         }
                     ]
-                    
                 },
                 {
                     "tags": ["householdGoods"],

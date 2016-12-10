@@ -35,7 +35,7 @@ QtObject{
                     "maxNumberOfGood": 6,
                     "maxNumberOfBad": 6,
                     "prefix": "qrc:/gcompris/data/words/",
-                    "levelImages": [ 
+                    "levelImages": [
                         {
                             "animals/baboon.jpg":["animals"],
                             "animals/bosmutus.jpg":["animals"],
@@ -99,7 +99,7 @@ QtObject{
                             "plants/plant4.jpg":["plants"],
                             "nature/nature5.jpg":["nature"]
                         }
-                    ]	      
+                    ]
                 },
                 {
                     "tags": ["animals"],
@@ -130,7 +130,7 @@ QtObject{
                     "maxNumberOfBad": 4,
                     "prefix": "qrc:/gcompris/data/words/",
                     "levelImages": [
-                        { 
+                        {
                             "animals/donkey.jpg":["animals"],
                             "animals/elephant.jpg":["animals"],
                             "animals/hare.jpg":["animals"],
@@ -142,7 +142,6 @@ QtObject{
                             "plants/tree3.jpg":["plants"]
                         }
                     ]
-                    
                 },
                 {
                     "tags": ["animals"],

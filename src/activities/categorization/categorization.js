@@ -32,7 +32,7 @@ var images
 var items
 var currentLevel = 1
 var numberOfLevel
-var index 
+var index
 var categoriesCount
 var imagesData = []
 var categoriesData = []
@@ -47,9 +47,9 @@ function init(items_,boardsUrl_) {
 
 function start() {
     if(items.demoVersion)
-        categoriesCount = 18
-    else
         categoriesCount = 6
+    else
+        categoriesCount = 18
     categoriesData = []
     items.categoryReview.stop()
     var categoriesFilename;
@@ -97,7 +97,7 @@ function savedPropertiesToCategories(dataToSave) {
         var categoryname = category.name
         if(props && props[category.name]) {
             category['favorite'] = props[category.name].favorite
-        } 
+        }
         else {
             category['favorite'] = false
         }
@@ -212,7 +212,7 @@ function getCategoryLevels() {
         imagesDetails[imagesPrefix + k] = items.details[items.bar.level - 1].categoryImages[0][k];
       });
 
-    // keys contains all the image paths. The good images are then filtered on the basis of the categoryTag 
+    // keys contains all the image paths. The good images are then filtered on the basis of the categoryTag
     var keys = Object.keys(imagesDetails);
     var categoryTag = items.details[items.bar.level - 1].tags;
     var result = keys.filter(function(element) {

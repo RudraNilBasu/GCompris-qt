@@ -35,7 +35,7 @@ QtObject{
                     "maxNumberOfGood": 5,
                     "maxNumberOfBad": 4,
                     "prefix": "qrc:/gcompris/data/words/",
-                    "levelImages": [                    
+                    "levelImages": [
                         {
                             "words/artichoke.png":["green"],
                             "words/cabbage.png":["green"],
@@ -47,21 +47,21 @@ QtObject{
                             "words/mail.png":["white"],
                             "words/post.png":["red"]
                         }
-                    ]                
+                    ]
                 },
                 {
                     "tags": ["white"],
                     "instructions": "Place the objects matching WHITE color to right and others to the left",
                     "image": imagesPrefix + "words/white.png",
                     "maxNumberOfGood": 6,
-                    "maxNumberOfBad": 6,  
+                    "maxNumberOfBad": 6,
                     "prefix": "qrc:/gcompris/data/words/",
-                    "levelImages": [   
+                    "levelImages": [
                         {
                             "words/milk.png":["white"],
                             "words/paper.svg": ["rectangle", "white"],
                             "words/dove.png":["white"],
-                            "words/mail.png":["white"], 
+                            "words/mail.png":["white"],
                             "words/egg.png":["white"],
                             "words/bead.png" : ["white"],
                             "words/feather.png":["white"],
@@ -81,7 +81,7 @@ QtObject{
                     "maxNumberOfGood": 5,
                     "maxNumberOfBad": 4,
                     "prefix": "qrc:/gcompris/data/words/",
-                    "levelImages": [      
+                    "levelImages": [
                         {
                             "words/hair_dryer.png":["pink"],
                             "words/flamingo.png":["pink"],
@@ -92,7 +92,7 @@ QtObject{
                             "words/kiwi.png":["brown"],
                             "words/ladybug.png":["red"],
                             "words/phone.png":["purple"]
-                        }    
+                        }
                     ]
                 },
                 {
@@ -102,7 +102,7 @@ QtObject{
                     "maxNumberOfGood": 5,
                     "maxNumberOfBad": 4,
                     "prefix": "qrc:/gcompris/data/words/",
-                    "levelImages": [     
+                    "levelImages": [
                         {
                             "shapes/dice.svg": ["cube", "red"],
                             "words/lobster.png":["red"],
@@ -113,8 +113,8 @@ QtObject{
                             "words/radio.png":["cuboid","blue"],
                             "words/ramp.png":["gray"],
                             "words/wheat.png":["yellow"]
-                        }    
-                    ] 
+                        }
+                    ]
                 },
                 {
                     "tags": ["brown"],
@@ -123,10 +123,10 @@ QtObject{
                     "maxNumberOfGood": 6,
                     "maxNumberOfBad": 6,
                     "prefix": "qrc:/gcompris/data/words/",
-                    "levelImages": [ 
+                    "levelImages": [
                         {
                             "shapes/cookie.svg": ["circle", "brown"],
-                            "words/date_fruit.png":["brown"],    
+                            "words/date_fruit.png":["brown"],
                             "words/chocolate.png":["brown"],
                             "words/board.png":["brown"],
                             "words/potato.png":["brown"],
@@ -138,7 +138,7 @@ QtObject{
                             "shapes/cd.svg": ["circle", "blue"],
                             "words/drip.png":["blue"]
                         }
-                    ] 
+                    ]
                 },
                 {
                     "tags": ["purple"],
@@ -148,7 +148,7 @@ QtObject{
                     "maxNumberOfGood": 6,
                     "maxNumberOfBad": 6,
                     "prefix": "qrc:/gcompris/data/words/",
-                    "levelImages": [ 
+                    "levelImages": [
                         {
                             "words/grape.png":["purple"],
                             "words/eggplant.png":["purple"],
@@ -163,7 +163,7 @@ QtObject{
                             "words/pumpkin.png": ["orange"],
                             "shapes/halfmoon.svg": ["semicircle", "grey"]
                         }
-                    ]    
+                    ]
                 },
                 {
                     "tags": ["gray"],
@@ -172,7 +172,7 @@ QtObject{
                     "maxNumberOfGood": 6,
                     "maxNumberOfBad": 6,
                     "prefix": "qrc:/gcompris/data/words/",
-                    "levelImages": [ 
+                    "levelImages": [
                         {
                             "words/chain.png": ["semicircle", "gray"],
                             "words/rabbit.png":["gray"],
@@ -186,7 +186,7 @@ QtObject{
                             "words/left.png":["blue"],
                             "words/flash.png":["pink"],
                             "words/ink.png":["purple"]
-                        }    
+                        }
                     ]
                 },
                 {
@@ -196,15 +196,15 @@ QtObject{
                     "maxNumberOfGood": 3,
                     "maxNumberOfBad": 3,
                     "prefix": "qrc:/gcompris/data/words/",
-                    "levelImages": [ 
-                        {      
+                    "levelImages": [
+                        {
                             "words/pumpkin.png":["orange"],
                             "shapes/halforange.svg": ["hemisphere", "orange"],
                             "words/orange.png":["orange"],
                             "words/plum.png":["purple"],
                             "words/potato.png":["brown"],
                             "words/post.png":["red"]
-                        }  
+                        }
                     ]
                 },
                 {
@@ -215,7 +215,7 @@ QtObject{
                     "maxNumberOfGood": 6,
                     "maxNumberOfBad": 6,
                     "prefix": "qrc:/gcompris/data/words/",
-                    "levelImages":[ 
+                    "levelImages":[
                         {
                             "words/anchor.png":["yellow"],
                             "words/cheese.png":["yellow"],

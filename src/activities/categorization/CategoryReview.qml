@@ -27,6 +27,8 @@ import "categorization.js" as Activity
 Item {
     id: rootItem
     property alias repeater: repeater
+    property alias leftZoneRepeater: leftZoneRepeater
+    property alias rightZoneRepeater: rightZoneRepeater
     property alias score: score
     property alias categoryDataset: categoryDataset
     property alias instructionBox: instructionBox
@@ -60,38 +62,44 @@ Item {
         anchors.fill: parent
         sourceSize.width:parent.width
 
-      GridView {
+      Flow {
           id:leftZoneModel
           width: parent.width/3
           height: parent.height
-          cellWidth: middleScreen.width*0.40
-          cellHeight: categoryBackground.height * 0.2
-          model: leftZone
-          delegate:
-          Zone { }
+          anchors.left: parent.left
+          anchors.top: categoryBackground.top
+          anchors.bottom: categoryBackground.bottom
+          spacing: 20
+          Repeater {
+              id: leftZoneRepeater
+              model: leftZone
+              Zone { }
+          }
+      }
+
         Rectangle {
             id: leftScreen
             anchors.fill: leftZoneModel
             color: leftAreaContainsDrag ? "#9933FF" : "red"
             opacity: 0.52
         }
-      }
 
-      GridView {
+      Flow {
           id: rightZoneModel
           width: parent.width/3.2
           height: parent.height
+          spacing: 15
           anchors.right: parent.right
           anchors.bottom: categoryBackground.bottom
           anchors.top: categoryBackground.top
           anchors.topMargin: items.mode === "easy" ? 0.2 * categoryBackground.height : ''
-          cellWidth: middleScreen.width*0.40
-          cellHeight: categoryBackground.height * 0.2
+          Repeater {
+          id: rightZoneRepeater
           model: rightZone
-          delegate:
           Zone { }
+          }
       }
-      
+
         Rectangle {
             id: rightScreen
             width: parent.width/3.2
@@ -167,7 +175,7 @@ Item {
                         property real positionX
                         property real positionY
                         property real lastX
-                        property real lastY 
+                        property real lastY
 
                         onPressed: {
                             items.instructionsChecked = false
@@ -190,18 +198,21 @@ Item {
                                 return;
                             //Drag.drop();
                             if(leftAreaContainsDrag) {
+                                print("left")
                                 leftZone.append({ "name": image.source.toString() })
                                 image.source = ""
                                 item.droppedPosition = "left"
-                                activity.audioEffects.play("qrc:/gcompris/src/core/resource/sounds/smudge.wav")    
+                                activity.audioEffects.play("qrc:/gcompris/src/core/resource/sounds/smudge.wav")
                             }
                             else if(rightAreaContainsDrag) {
+                                print("right")
                                 rightZone.append({name: image.source.toString()})
                                 image.source = ""
                                 item.droppedPosition = "right"
                                 activity.audioEffects.play("qrc:/gcompris/src/core/resource/sounds/smudge.wav")
                             }
                             else {
+                                print("middle")
                                 item.droppedPosition = "middle"
                             }
                             leftAreaContainsDrag = false
@@ -256,7 +267,7 @@ Item {
                 anchors.fill: parent
                 onClicked: {
                     Activity.allPlaced();
-                }                
+                }
             }
         }
 
@@ -286,7 +297,7 @@ Item {
                 right: categoryBackground.right
                 left: categoryimage.right
                 bottom: undefined
-            }    
+            }
         }
     }
 
@@ -315,13 +326,12 @@ Item {
         if(elementRightPos <= leftAreaRightBorderPos)
             return true;
         else
-            return false;      
+            return false;
     }
-    
     function isDragInRightArea(rightAreaLeftBorderPos, elementLeftPos) {
         if(elementLeftPos >= rightAreaLeftBorderPos)
             return true;
         else
-            return false;  
+            return false;
     }
 }

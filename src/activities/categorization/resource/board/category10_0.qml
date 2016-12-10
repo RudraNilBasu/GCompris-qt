@@ -51,7 +51,7 @@ QtObject{
                             "vegetables/carrots.jpg": ["vegetabless"]
                         }
                     ]
-                },   
+                },
                 {
                     "tags": ["transport"],
                     "instructions": qsTr("Place the MODE OF TRANSPORTS to the right and other objects to the left"),
@@ -75,7 +75,7 @@ QtObject{
                             "others/fork.jpg": ["others"]
                         }
                     ]
-                }, 
+                },
                 {
                     "tags": ["transport"],
                     "instructions": qsTr("Place the MODE OF TRANSPORTS to the right and other objects to the left"),
@@ -99,7 +99,7 @@ QtObject{
                             "fruits/apple.jpg": ["fruits"]
                         }
                     ]
-                }, 
+                },
                 {
                     "tags": ["transport"],
                     "instructions": qsTr("Place the MODE OF TRANSPORTS to the right and other objects to the left"),
@@ -124,8 +124,8 @@ QtObject{
                             "nature/nature14.jpg": ["nature"]
                         }
                     ]
-                }, 
-		{
+                },
+                {
                     "tags": ["transport"],
                     "instructions": qsTr("Place the MODE OF TRANSPORTS to the right and other objects to the left"),
                     "image":imagesPrefix + "train2.jpg",
@@ -145,7 +145,7 @@ QtObject{
                             "others/street.jpg":["others"]
                         }
                     ]
-                }, 
+                },
                 {
                     "tags": ["transport"],
                     "instructions": qsTr("Place the MODE OF TRANSPORTS to the right and other objects to the left"),
@@ -166,7 +166,6 @@ QtObject{
                             "vegetables/spinach.jpg": ["vegetables"]
                         }
                     ]
-                    
                 },
                 {
                     "tags": ["transport"],

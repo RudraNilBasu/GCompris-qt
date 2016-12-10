@@ -36,7 +36,7 @@ QtObject{
                     "maxNumberOfBad": 6,
                     "prefix": "qrc:/gcompris/data/words/",
                     "levelImages": [
-                        { 
+                        {
                             "nature/nature1.jpg":["nature"],
                             "nature/nature2.jpg":["nature"],
                             "nature/nature3.jpg":["nature"],
@@ -117,8 +117,8 @@ QtObject{
                             "others/electricfan.jpg":["others"]
                         }
                     ]
-                },               
-		{
+                },   
+                {
                     "tags": ["nature"],
                     "instructions": qsTr("Place the NATURE images to the right and other objects to the left"),
                     "image": imagesPrefix + "nature2.jpg",
@@ -146,8 +146,8 @@ QtObject{
                     "maxNumberOfGood": 3,
                     "maxNumberOfBad": 3,
                     "prefix": "qrc:/gcompris/data/words/",
-                    "levelImages": [ 
-                        { 
+                    "levelImages": [
+                        {
                             "nature/nature23.jpg":["nature"],
                             "nature/nature24.jpg":["nature"],
                             "nature/nature25.jpg":["nature"],
@@ -164,8 +164,8 @@ QtObject{
                     "maxNumberOfGood": 3,
                     "maxNumberOfBad": 3,
                     "prefix": "qrc:/gcompris/data/words/",
-                    "levelImages": [ 
-                        {  
+                    "levelImages": [
+                        {
                             "nature/nature26.jpg":["nature"],
                             "nature/nature27.jpg":["nature"],
                             "nature/nature28.jpg":["nature"],
@@ -175,15 +175,15 @@ QtObject{
                         }
                     ]
                 }, 
-		{
+                {
                     "tags": ["nature"],
                     "instructions": qsTr("Place the NATURE images to the right and other objects to the left"),
                     "image": imagesPrefix + "nature14.jpg",
                     "maxNumberOfGood": 2,
                     "maxNumberOfBad": 4,
                     "prefix": "qrc:/gcompris/data/words/",
-                    "levelImages": [ 
-                        {  
+                    "levelImages": [
+                        {
                             "nature/nature34.jpg":["nature"],
                             "nature/nature35.jpg":["nature"],
                             "householdGoods/chair2.jpg":["householdGoods"],
@@ -194,7 +194,6 @@ QtObject{
                     ]
                 }
             ]
-            
         }
     ]
 }

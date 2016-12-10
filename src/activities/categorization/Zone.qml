@@ -1,4 +1,4 @@
-/* GCompris - CategoryReview.qml
+/* GCompris - Zone.qml
  *
  * Copyright (C) 2016 Divyam Madaan <divyam3897@gmail.com>
  *
@@ -59,18 +59,19 @@ Image {
             //Drag.drop();
             if(leftAreaContainsDrag) {
                 leftZone.append({ "name": image.source.toString() })
+                rightZone.remove({"name":image.source.toString()})
                 image.source = ""
                 item.droppedPosition = "left"
-                activity.audioEffects.play("qrc:/gcompris/src/core/resource/sounds/smudge.wav")    
             }
             else if(rightAreaContainsDrag) {
-                rightZone.append({name: image.source.toString()})
+                rightZone.append({"name": image.source.toString()})
+                leftZone.remove({"name":image.source.toString()})
                 image.source = ""
                 item.droppedPosition = "right"
-                activity.audioEffects.play("qrc:/gcompris/src/core/resource/sounds/smudge.wav")
             }
-            else 
+            else {
                 item.droppedPosition = "middle"
+            }
             leftAreaContainsDrag = false
             rightAreaContainsDrag = false
             lastX = point1.x

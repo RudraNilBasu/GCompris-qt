@@ -33,7 +33,7 @@ QtObject{
                     "instructions": qsTr("Place the FOOD ITEMS to the right and other objects to the left"),
                     "image": imagesPrefix + "sweetBread.jpg",
                     "maxNumberOfGood": 6,
-		    "maxNumberOfBad": 6,
+                    "maxNumberOfBad": 6,
                     "prefix": "qrc:/gcompris/data/words/",
                     "levelImages": [
                         { 
@@ -117,8 +117,8 @@ QtObject{
                             "insects/insect8.jpg":["insects"]
                         }
                     ]
-                },               
-		{
+                },  
+                {
                     "tags": ["food"],
                     "instructions": qsTr("Place the FOOD ITEMS to the right and other objects to the left"),
                     "image": imagesPrefix + "hamburger.jpg",
@@ -136,15 +136,15 @@ QtObject{
                         }
                     ]
                 },
-		{
+                {
                     "tags": ["food"],
                     "instructions": qsTr("Place the FOOD ITEMS to the right and other objects to the left"),
                     "image": imagesPrefix + "milk.jpg",
                     "maxNumberOfGood": 3,
                     "maxNumberOfBad": 3,
                     "prefix": "qrc:/gcompris/data/words/",
-                    "levelImages": [ 
-                        {  
+                    "levelImages": [
+                        {
                             "food/skimmedMilk.jpg":["food"],
                             "food/steak.jpg":["food"],
                             "food/sweetBread.jpg":["food"],
@@ -155,7 +155,6 @@ QtObject{
                     ]
                 }
             ]
-            
         }
     ]
 }

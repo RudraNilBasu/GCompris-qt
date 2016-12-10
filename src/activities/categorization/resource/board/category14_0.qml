@@ -36,7 +36,7 @@ QtObject{
                     "maxNumberOfBad": 6,
                     "prefix": "qrc:/gcompris/data/words/",
                     "levelImages": [
-                        { 
+                        {
                             "birds/parrot.jpg":["birds"],
                             "birds/bird34.jpg":["birds"],
                             "birds/bird23.jpg":["birds"],
@@ -149,8 +149,8 @@ QtObject{
                     "maxNumberOfGood": 4,
                     "maxNumberOfBad": 5,
                     "prefix": "qrc:/gcompris/data/words/",
-                    "levelImages": [ 
-                        { 
+                    "levelImages": [
+                        {
                             "birds/bird23.jpg":["birds"],
                             "birds/bird24.jpg":["birds"],
                             "birds/bird25.jpg":["birds"],
@@ -170,8 +170,8 @@ QtObject{
                     "maxNumberOfGood": 3,
                     "maxNumberOfBad": 3,
                     "prefix": "qrc:/gcompris/data/words/",
-                    "levelImages": [ 
-                        { 
+                    "levelImages": [
+                        {
                             "birds/bird27.jpg":["birds"],
                             "birds/bird28.jpg":["birds"],
                             "birds/bird29.jpg":["birds"],
@@ -188,8 +188,8 @@ QtObject{
                     "maxNumberOfGood": 3,
                     "maxNumberOfBad": 3,
                     "prefix": "qrc:/gcompris/data/words/",
-                    "levelImages": [ 
-                        { 
+                    "levelImages": [
+                        {
                             "birds/bird30.jpg":["birds"],
                             "birds/bird31.jpg":["birds"],
                             "birds/bird32.jpg":["birds"],
@@ -206,8 +206,8 @@ QtObject{
                     "maxNumberOfGood": 2,
                     "maxNumberOfBad": 4,
                     "prefix": "qrc:/gcompris/data/words/",
-                    "levelImages": [ 
-                        { 
+                    "levelImages": [
+                        {
                             "birds/bird33.jpg":["birds"],
                             "birds/bird34.jpg":["birds"],
                             "animals/lion.jpg":["animals"],
@@ -218,7 +218,6 @@ QtObject{
                     ]
                 }
             ]
-            
         }
     ]
 }

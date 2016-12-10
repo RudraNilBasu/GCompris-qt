@@ -51,7 +51,7 @@ QtObject{
                             "others/pencil.jpg": ["others"]
                         }
                     ]
-                },   
+                },
                 {
                     "tags": ["living"],
                     "instructions": qsTr("Place the living beings to the right and other objects to the left"),
@@ -75,7 +75,7 @@ QtObject{
                             "others/mobile.jpg": ["others"]
                         }
                     ]
-                }, 
+                },
                 {
                     "tags": ["living"],
                     "instructions": qsTr("Place the living beings to the right and other objects to the left"),
@@ -96,7 +96,6 @@ QtObject{
                             "householdGoods/canOpener.jpg": ["householdGoods"]
                         }
                     ]
-                    
                 },
                 {
                     "tags": ["living"],

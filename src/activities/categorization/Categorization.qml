@@ -3,7 +3,7 @@
 * Copyright (C) 2016 Divyam Madaan <divyam3897@gmail.com>
 *
 * Authors:
-*   Divyam Madaan <divyam3897@gmail.com> 
+*   Divyam Madaan <divyam3897@gmail.com>
 *
 *   This program is free software; you can redistribute it and/or modify
 *   it under the terms of the GNU General Public License as published by
@@ -67,18 +67,18 @@ ActivityBase {
             property bool categoryImageChecked: (mode === "easy")
             property bool scoreChecked: (mode === "easy" || mode === "medium")
             property bool iAmReadyChecked: (mode === "expert")
-            property bool demoVersion:  (DownloadManager.haveLocalResource(ApplicationSettings.wordset)) ? true : false
+            property bool demoVersion:  (DownloadManager.haveLocalResource(ApplicationSettings.wordset)) ? false : true
             property var details
         }
 
-        onStart: { 
+        onStart: {
             Activity.init(items, boardsUrl)
             dialogActivityConfig.getInitialConfiguration()
             Activity.start()
         }
 
         onStop: {
-            dialogActivityConfig.saveDatainConfiguration() 
+            dialogActivityConfig.saveDatainConfiguration()
         }
 
         MenuScreen {

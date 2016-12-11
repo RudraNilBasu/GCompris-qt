@@ -66,14 +66,25 @@ Item {
           id:leftZoneModel
           width: parent.width/3
           height: parent.height
-          anchors.left: parent.left
-          anchors.top: categoryBackground.top
-          anchors.bottom: categoryBackground.bottom
           spacing: 20
+          anchors {
+              left: parent.left
+              top: categoryBackground.top
+              bottom: categoryBackground.bottom
+          }
           Repeater {
               id: leftZoneRepeater
               model: leftZone
-              Zone { }
+              Item {
+                  id: leftZoneItem
+                  width: middleScreen.width*0.32
+                  height: categoryBackground.height * 0.2
+                  opacity: 1
+                  Zone {
+                      id: image
+                      source: name
+                    }
+                }
           }
       }
 
@@ -89,27 +100,42 @@ Item {
           width: parent.width/3.2
           height: parent.height
           spacing: 15
-          anchors.right: parent.right
-          anchors.bottom: categoryBackground.bottom
-          anchors.top: categoryBackground.top
-          anchors.topMargin: items.mode === "easy" ? 0.2 * categoryBackground.height : ''
-          Repeater {
-          id: rightZoneRepeater
-          model: rightZone
-          Zone { }
+          anchors {
+              right: parent.right
+              bottom: categoryBackground.bottom
+              top: categoryBackground.top
+              topMargin: items.mode === "easy" ? 0.2 * categoryBackground.height : ''
           }
-      }
+          Repeater {
+              id: rightZoneRepeater
+              model: rightZone
+              Item {
+                  id: rightZoneItem
+                  width: middleScreen.width*0.32
+                  height: categoryBackground.height * 0.2
+                  opacity: 1
+                  Zone {
+                     id: image
+                     source: name
+                    }
+                }
+         }
+    }
 
         Rectangle {
             id: rightScreen
             width: parent.width/3.2
             height: parent.height
-            anchors.right: parent.right
-            anchors.bottom: categoryBackground.bottom
-            anchors.top: categoryBackground.top
+            anchors {
+                right: parent.right
+                bottom: categoryBackground.bottom
+                top: categoryBackground.top
+                left: middleScreen.right
+            }
             color: rightAreaContainsDrag ? "#FFCC00" : "green"
             opacity: 0.47
         }
+
         Rectangle {
             id: middleScreen
             anchors.left: leftZoneModel.right
@@ -159,67 +185,9 @@ Item {
                     width: middleScreen.width*0.32
                     height: categoryBackground.height * 0.2
                     opacity: 1
-
-                    Image {
+                    Zone {
                         id: image
                         source: modelData.src
-                        anchors.fill: parent
-                    }
-                    property string droppedPosition: "middle"
-                    property bool isRight: modelData.isRight
-
-                    MultiPointTouchArea {
-                        id: dragArea
-                        anchors.fill: parent
-                        touchPoints: [ TouchPoint { id: point1 } ]
-                        property real positionX
-                        property real positionY
-                        property real lastX
-                        property real lastY
-
-                        onPressed: {
-                            items.instructionsChecked = false
-                            positionX = point1.x
-                            positionY = point1.y
-                        }
-
-                        onUpdated: {
-                            var moveX = point1.x - positionX
-                            var moveY = point1.y - positionY
-                            parent.x = parent.x + moveX
-                            parent.y = parent.y + moveY
-                            leftAreaContainsDrag = isDragInLeftArea(0, parent.x+parent.width)
-                            rightAreaContainsDrag = isDragInRightArea(rootItem.width/3, parent.x)
-                            lastX = 0, lastY = 0
-                        }
-
-                        onReleased: {
-                            if(lastX == point1.x && lastY == point1.y)
-                                return;
-                            //Drag.drop();
-                            if(leftAreaContainsDrag) {
-                                print("left")
-                                leftZone.append({ "name": image.source.toString() })
-                                image.source = ""
-                                item.droppedPosition = "left"
-                                activity.audioEffects.play("qrc:/gcompris/src/core/resource/sounds/smudge.wav")
-                            }
-                            else if(rightAreaContainsDrag) {
-                                print("right")
-                                rightZone.append({name: image.source.toString()})
-                                image.source = ""
-                                item.droppedPosition = "right"
-                                activity.audioEffects.play("qrc:/gcompris/src/core/resource/sounds/smudge.wav")
-                            }
-                            else {
-                                print("middle")
-                                item.droppedPosition = "middle"
-                            }
-                            leftAreaContainsDrag = false
-                            rightAreaContainsDrag = false
-                            lastX = point1.x
-                            lastY = point1.y
-                        }
                     }
                 }
             }

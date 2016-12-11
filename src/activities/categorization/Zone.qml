@@ -29,54 +29,60 @@ Image {
     width: middleScreen.width*0.28
     height: categoryBackground.height * 0.15
     source: name
-    property string droppedPosition: "middle"
-    MultiPointTouchArea {
-        id: dragArea
-        anchors.fill: parent
-        touchPoints: [ TouchPoint { id: point1 } ]
-        property real positionX
-        property real positionY
-        property real lastX
-        property real lastY
-        onPressed: {
-            items.instructionsChecked = false
-            positionX = point1.x
-            positionY = point1.y
-        }
-        onUpdated: {
-            var moveX = point1.x - positionX
-            var moveY = point1.y - positionY
-            parent.x = parent.x + moveX
-            parent.y = parent.y + moveY
-            leftAreaContainsDrag = isDragInLeftArea(0, parent.x+parent.width)
-            rightAreaContainsDrag = isDragInRightArea(rootItem.width/3, parent.x)
-            lastX = 0, lastY = 0
-        }
-        onReleased: {
-            var item = items.categoryReview.repeater.itemAt(index);
-            if(lastX == point1.x && lastY == point1.y)
-                return;
-            //Drag.drop();
-            if(leftAreaContainsDrag) {
-                leftZone.append({ "name": image.source.toString() })
-                rightZone.remove({"name":image.source.toString()})
-                image.source = ""
-                item.droppedPosition = "left"
+        MultiPointTouchArea {
+            id: dragArea
+            anchors.fill: parent
+            touchPoints: [ TouchPoint { id: point1 } ]
+            property real positionX
+            property real positionY
+            property real lastX
+            property real lastY
+            property string droppedPosition: "middle"
+            property bool isRight: isRight
+
+            onPressed: {
+                items.instructionsChecked = false
+                positionX = point1.x
+                positionY = point1.y
             }
-            else if(rightAreaContainsDrag) {
-                rightZone.append({"name": image.source.toString()})
-                leftZone.remove({"name":image.source.toString()})
-                image.source = ""
-                item.droppedPosition = "right"
+
+            onUpdated: {
+                var moveX = point1.x - positionX
+                var moveY = point1.y - positionY
+                parent.x = parent.x + moveX
+                parent.y = parent.y + moveY
+                leftAreaContainsDrag = isDragInLeftArea(0, parent.x+parent.width)
+                rightAreaContainsDrag = isDragInRightArea(rootItem.width/3, parent.x)
+                lastX = 0, lastY = 0
             }
-            else {
-                item.droppedPosition = "middle"
-            }
-            leftAreaContainsDrag = false
-            rightAreaContainsDrag = false
-            lastX = point1.x
-            lastY = point1.y
-            }
+
+            onReleased: {
+                if(lastX == point1.x && lastY == point1.y)
+                    return;
+                //Drag.drop();
+                if(leftAreaContainsDrag) {
+                    print("left")
+                    leftZone.append({ "name": image.source.toString() })
+                    image.source = ""
+                    droppedPosition = "left"
+                    activity.audioEffects.play("qrc:/gcompris/src/core/resource/sounds/smudge.wav")
+                }
+                else if(rightAreaContainsDrag) {
+                    print("right")
+                    rightZone.append({name: image.source.toString()})
+                    image.source = ""
+                    droppedPosition = "right"
+                    activity.audioEffects.play("qrc:/gcompris/src/core/resource/sounds/smudge.wav")
+                }
+                else {
+                    print("middle")
+                    droppedPosition = "middle"
+                }
+                leftAreaContainsDrag = false
+                rightAreaContainsDrag = false
+                lastX = point1.x
+                lastY = point1.y
+                }
         }
 }
 

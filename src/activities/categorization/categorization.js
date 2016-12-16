@@ -168,8 +168,9 @@ function previousLevel() {
 function allPlaced() {
   items.categoryReview.score.currentSubLevel = 0;
   for(var i = 0 ; i < items.categoryReview.repeater.count; ++i) {
-      var item = items.categoryReview.repeater.itemAt(i);
+      var item = items.categoryReview.repeater.itemAt(i);print(JSON.stringify(item.isRight))
       if((item.droppedPosition === "right" && item.isRight) || (item.droppedPosition === "left" && !item.isRight)) {
+          
           items.categoryReview.score.currentSubLevel ++;
         }
     }

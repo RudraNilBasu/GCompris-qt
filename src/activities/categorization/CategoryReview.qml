@@ -41,6 +41,9 @@ Item {
     property alias leftZone: leftZone
     property alias rightZone: rightZone
     property alias rightZoneModel: rightZoneModel
+    property alias leftScreen: leftScreen
+    property alias middleScreen: middleScreen
+    property alias rightScreen: rightScreen
     anchors.fill: parent
 
     Loader {
@@ -67,11 +70,7 @@ Item {
           width: parent.width/3
           height: parent.height
           spacing: 20
-          anchors {
-              left: parent.left
-              top: categoryBackground.top
-              bottom: categoryBackground.bottom
-          }
+          x: 0
           Repeater {
               id: leftZoneRepeater
               model: leftZone
@@ -90,7 +89,9 @@ Item {
 
         Rectangle {
             id: leftScreen
-            anchors.fill: leftZoneModel
+            width: parent.width/3
+            height: parent.height
+            x: 0
             color: leftAreaContainsDrag ? "#9933FF" : "red"
             opacity: 0.52
         }
@@ -100,12 +101,9 @@ Item {
           width: parent.width/3.2
           height: parent.height
           spacing: 15
-          anchors {
-              right: parent.right
-              bottom: categoryBackground.bottom
-              top: categoryBackground.top
-              topMargin: items.mode === "easy" ? 0.2 * categoryBackground.height : ''
-          }
+          x: leftScreen.width + middleScreen.width
+          anchors.top: categoryBackground.top
+          anchors.topMargin: items.mode === "easy" ? 0.2 * categoryBackground.height : ''
           Repeater {
               id: rightZoneRepeater
               model: rightZone
@@ -120,29 +118,23 @@ Item {
                     }
                 }
          }
-    }
+      }
 
-        Rectangle {
-            id: rightScreen
-            width: parent.width/3.2
-            height: parent.height
-            anchors {
-                right: parent.right
-                bottom: categoryBackground.bottom
-                top: categoryBackground.top
-                left: middleScreen.right
-            }
-            color: rightAreaContainsDrag ? "#FFCC00" : "green"
-            opacity: 0.47
+      Rectangle {
+          id: rightScreen
+          width: parent.width/3
+          height: parent.height
+          x: leftScreen.width + middleScreen.width
+          color: rightAreaContainsDrag ? "#FFCC00" : "green"
+          opacity: 0.52
         }
 
         Rectangle {
             id: middleScreen
-            anchors.left: leftZoneModel.right
-            anchors.right: rightZoneModel.left
-            color: "#00FFFFFF"
             width: parent.width/3
             height: parent.height
+            x: leftScreen.width
+            color: "#00FFFFFF"
         }
 
         Rectangle {
@@ -288,18 +280,5 @@ Item {
     function start() {
         focus = true
         rootItem.visible = true
-    }
-
-    function isDragInLeftArea(leftAreaRightBorderPos, elementRightPos) {
-        if(elementRightPos <= leftAreaRightBorderPos)
-            return true;
-        else
-            return false;
-    }
-    function isDragInRightArea(rightAreaLeftBorderPos, elementLeftPos) {
-        if(elementLeftPos >= rightAreaLeftBorderPos)
-            return true;
-        else
-            return false;
     }
 }

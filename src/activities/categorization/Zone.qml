@@ -44,6 +44,7 @@ Image {
                 items.instructionsChecked = false
                 positionX = point1.x
                 positionY = point1.y
+
             }
 
             onUpdated: {
@@ -51,28 +52,31 @@ Image {
                 var moveY = point1.y - positionY
                 parent.x = parent.x + moveX
                 parent.y = parent.y + moveY
-                leftAreaContainsDrag = isDragInLeftArea(0, parent.x+parent.width)
-                rightAreaContainsDrag = isDragInRightArea(rootItem.width/3, parent.x)
+                var imagePos = image.mapToItem(null,0,0)
+                leftAreaContainsDrag = isDragInLeftArea(leftScreen.width, imagePos.x + parent.width)
+                rightAreaContainsDrag = isDragInRightArea(middleScreen.width + leftScreen.width,imagePos.x)
                 lastX = 0, lastY = 0
+
+                    
             }
 
-            onReleased: {
+            onReleased: {   
                 if(lastX == point1.x && lastY == point1.y)
                     return;
                 //Drag.drop();
                 if(leftAreaContainsDrag) {
                     print("left")
-                    leftZone.append({ "name": image.source.toString() })
+                    leftZone.append({ "name": image.source.toString(),"droppedZone": "left" })
                     image.source = ""
+                    leftZoneRepeater.model = leftZone
                     droppedPosition = "left"
-                    activity.audioEffects.play("qrc:/gcompris/src/core/resource/sounds/smudge.wav")
                 }
-                else if(rightAreaContainsDrag) {
+                else if(rightAreaContainsDrag) { 
                     print("right")
-                    rightZone.append({name: image.source.toString()})
+                    rightZone.append({"name": image.source.toString(),"droppedZone": right})
                     image.source = ""
-                    droppedPosition = "right"
-                    activity.audioEffects.play("qrc:/gcompris/src/core/resource/sounds/smudge.wav")
+                    rightZoneRepeater.model = rightZone
+                    droppedPosition = "right"     
                 }
                 else {
                     print("middle")
@@ -84,5 +88,17 @@ Image {
                 lastY = point1.y
                 }
         }
+    function isDragInLeftArea(leftAreaRightBorderPos, elementRightPos) {
+        if(elementRightPos <= leftAreaRightBorderPos)
+            return true;
+        else
+            return false;
+    }
+    function isDragInRightArea(rightAreaLeftBorderPos, elementLeftPos) {
+        if((rightAreaLeftBorderPos <= elementLeftPos))
+            return true;
+        else
+            return false;
+    }
 }
 

@@ -26,9 +26,6 @@ import "categorization.js" as Activity
 
 Item {
     id: rootItem
-    property alias repeater: repeater
-    property alias leftZoneRepeater: leftZoneRepeater
-    property alias rightZoneRepeater: rightZoneRepeater
     property alias score: score
     property alias categoryDataset: categoryDataset
     property alias instructionBox: instructionBox
@@ -58,33 +55,17 @@ Item {
    ListModel {
         id: rightZone
     }
-
+    
     Image {
         id: categoryBackground
         source: "qrc:/gcompris/src/activities/categorization/resource/background.svg"
         anchors.fill: parent
         sourceSize.width:parent.width
 
-      Flow {
+      Zone {
           id:leftZoneModel
-          width: parent.width/3
-          height: parent.height
-          spacing: 20
+          model: leftZone
           x: 0
-          Repeater {
-              id: leftZoneRepeater
-              model: leftZone
-              Item {
-                  id: leftZoneItem
-                  width: middleScreen.width*0.32
-                  height: categoryBackground.height * 0.2
-                  opacity: 1
-                  Zone {
-                      id: image
-                      source: name
-                    }
-                }
-          }
       }
 
         Rectangle {
@@ -96,28 +77,12 @@ Item {
             opacity: 0.52
         }
 
-      Flow {
+      Zone {
           id: rightZoneModel
-          width: parent.width/3.2
-          height: parent.height
-          spacing: 15
           x: leftScreen.width + middleScreen.width
           anchors.top: categoryBackground.top
           anchors.topMargin: items.mode === "easy" ? 0.2 * categoryBackground.height : ''
-          Repeater {
-              id: rightZoneRepeater
-              model: rightZone
-              Item {
-                  id: rightZoneItem
-                  width: middleScreen.width*0.32
-                  height: categoryBackground.height * 0.2
-                  opacity: 1
-                  Zone {
-                     id: image
-                     source: name
-                    }
-                }
-         }
+          model: rightZone
       }
 
       Rectangle {
@@ -157,9 +122,8 @@ Item {
             }
         }
 
-        Flow {
+        Zone {
             id: options
-            spacing: 0.012 * middleScreen.width
             anchors {
                 left: leftZoneModel.right
                 right: rightZoneModel.left
@@ -167,21 +131,6 @@ Item {
                 topMargin: 0.05 * parent.height
                 bottom: categoryBackground.bottom
                 leftMargin: 0.015 * middleScreen.width
-            }
-
-            Repeater {
-                id: repeater
-
-                Item {
-                    id: item
-                    width: middleScreen.width*0.32
-                    height: categoryBackground.height * 0.2
-                    opacity: 1
-                    Zone {
-                        id: image
-                        source: modelData.src
-                    }
-                }
             }
         }
 

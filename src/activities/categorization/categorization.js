@@ -168,9 +168,9 @@ function previousLevel() {
 function allPlaced() {
   items.categoryReview.score.currentSubLevel = 0;
   for(var i = 0 ; i < items.categoryReview.repeater.count; ++i) {
-      var item = items.categoryReview.repeater.itemAt(i);print(JSON.stringify(item.isRight))
+      var item = items.categoryReview.repeater.itemAt(i)
+      print("src: ",item.src)
       if((item.droppedPosition === "right" && item.isRight) || (item.droppedPosition === "left" && !item.isRight)) {
-          
           items.categoryReview.score.currentSubLevel ++;
         }
     }
@@ -227,14 +227,17 @@ function getCategoryLevels() {
     var goodvalidimages = result.length;
     var numberOfGood = Math.min(goodvalidimages,items.details[items.bar.level-1].numberOfGood);
     var table = result.map(function(obj) {
-        return {"src": obj, "isRight": true}
+        return {"name": obj, "isRight": true}
     });
     table = table.splice(0,numberOfGood);
-
+ 
+for (var k in table) {
+    print("Name: " + k + " Value: " + JSON.stringify(table[k]));
+}
     // remaining bad set of images filtered and stored
     var resultBad = keys.filter(function(i) {return result.indexOf(i) < 0;});
     var tableBad = resultBad.map(function(obj) {
-        return {"src": obj, "isRight": false}
+        return {"name": obj, "isRight": false}
     });
     var badvalidimages = resultBad.length;
     var numberofBad = Math.min(badvalidimages,items.details[items.bar.level-1].numberofBad);
@@ -245,6 +248,10 @@ function getCategoryLevels() {
     Core.shuffle(table);
     items.categoryReview.repeater.model = table
     items.categoryReview.score.numberOfSubLevels = items.categoryReview.repeater.count
+      for(var i = 0 ; i < items.categoryReview.repeater.count; ++i) {
+      var item = items.categoryReview.repeater.itemAt(i)
+      print("src: ",item.src)
+      }
 }
 
 // get categories details from the complete dataset

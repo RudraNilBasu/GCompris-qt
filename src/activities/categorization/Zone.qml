@@ -29,11 +29,11 @@ Flow {
     width: parent.width/3.2
     height: parent.height
     spacing: 15
+    property alias repeater: repeater
     Repeater {
-        id: rightZoneRepeater
-        model: rightZone
+        id: repeater
         Item {
-            id: rightZoneItem
+            id: item
             width: middleScreen.width*0.32
             height: categoryBackground.height * 0.2
             opacity: 1

@@ -246,11 +246,11 @@ for (var k in table) {
     // Concat both the good and bad images, shuffles them and stores them in the repeater model
     table = table.concat(tableBad);
     Core.shuffle(table);
-    items.categoryReview.repeater.model = table
-    items.categoryReview.score.numberOfSubLevels = items.categoryReview.repeater.count
-      for(var i = 0 ; i < items.categoryReview.repeater.count; ++i) {
-      var item = items.categoryReview.repeater.itemAt(i)
-      print("src: ",item.src)
+    items.categoryReview.options.repeater.model = table
+    items.categoryReview.score.numberOfSubLevels = items.categoryReview.options.repeater.count
+        for(var i = 0 ; i < items.categoryReview.options.repeater.count; ++i) {
+      var item = items.categoryReview.options.repeater.itemAt(i)
+            print("src: ",item.name)
       }
 }
 

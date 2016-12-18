@@ -29,6 +29,7 @@ Item {
     property alias score: score
     property alias categoryDataset: categoryDataset
     property alias instructionBox: instructionBox
+    property alias options: options
     property bool isDropped: true
     property bool leftAreaContainsDrag: false
     property bool rightAreaContainsDrag: false
@@ -48,25 +49,25 @@ Item {
         asynchronous: false
     }
 
-   ListModel {
+    ListModel {
         id: leftZone
     }
 
-   ListModel {
+    ListModel {
         id: rightZone
     }
-    
+
     Image {
         id: categoryBackground
         source: "qrc:/gcompris/src/activities/categorization/resource/background.svg"
         anchors.fill: parent
         sourceSize.width:parent.width
 
-      Zone {
-          id:leftZoneModel
-          model: leftZone
-          x: 0
-      }
+        Zone {
+            id:leftZoneModel
+            repeater.model: leftZone
+            x: 0
+        }
 
         Rectangle {
             id: leftScreen
@@ -77,21 +78,21 @@ Item {
             opacity: 0.52
         }
 
-      Zone {
-          id: rightZoneModel
-          x: leftScreen.width + middleScreen.width
-          anchors.top: categoryBackground.top
-          anchors.topMargin: items.mode === "easy" ? 0.2 * categoryBackground.height : ''
-          model: rightZone
-      }
+        Zone {
+            id: rightZoneModel
+            x: leftScreen.width + middleScreen.width
+            anchors.top: categoryBackground.top
+            anchors.topMargin: items.mode === "easy" ? 0.2 * categoryBackground.height : ''
+            repeater.model: rightZone
+        }
 
-      Rectangle {
-          id: rightScreen
-          width: parent.width/3
-          height: parent.height
-          x: leftScreen.width + middleScreen.width
-          color: rightAreaContainsDrag ? "#FFCC00" : "green"
-          opacity: 0.52
+        Rectangle {
+            id: rightScreen
+            width: parent.width/3
+            height: parent.height
+            x: leftScreen.width + middleScreen.width
+            color: rightAreaContainsDrag ? "#FFCC00" : "green"
+            opacity: 0.52
         }
 
         Rectangle {

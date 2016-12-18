@@ -167,14 +167,13 @@ function previousLevel() {
 // Checks if all the items are dragged and dropped in the correct or incorrect area.
 function allPlaced() {
   items.categoryReview.score.currentSubLevel = 0;
-  for(var i = 0 ; i < items.categoryReview.repeater.count; ++i) {
-      var item = items.categoryReview.repeater.itemAt(i)
-      print("src: ",item.src)
+  for(var i = 0 ; i < items.categoryReview.options.repeater.count; ++i) {
+      var item = items.categoryReview.options.repeater.itemAt(i)
       if((item.droppedPosition === "right" && item.isRight) || (item.droppedPosition === "left" && !item.isRight)) {
           items.categoryReview.score.currentSubLevel ++;
         }
     }
-    if(items.categoryReview.score.currentSubLevel == items.categoryReview.repeater.count) {
+    if(items.categoryReview.score.currentSubLevel == items.categoryReview.options.repeater.count) {
         items.bonus.good("flower");
     }
     else {
@@ -230,10 +229,7 @@ function getCategoryLevels() {
         return {"name": obj, "isRight": true}
     });
     table = table.splice(0,numberOfGood);
- 
-for (var k in table) {
-    print("Name: " + k + " Value: " + JSON.stringify(table[k]));
-}
+
     // remaining bad set of images filtered and stored
     var resultBad = keys.filter(function(i) {return result.indexOf(i) < 0;});
     var tableBad = resultBad.map(function(obj) {
@@ -246,12 +242,10 @@ for (var k in table) {
     // Concat both the good and bad images, shuffles them and stores them in the repeater model
     table = table.concat(tableBad);
     Core.shuffle(table);
-    items.categoryReview.options.repeater.model = table
+    for(var i = 0; i < table.length; i++) {
+        items.categoryReview.middleZone.append({"isRight":table[i].isRight,"name": table[i].name})
+    }
     items.categoryReview.score.numberOfSubLevels = items.categoryReview.options.repeater.count
-        for(var i = 0 ; i < items.categoryReview.options.repeater.count; ++i) {
-      var item = items.categoryReview.options.repeater.itemAt(i)
-            print("src: ",item.name)
-      }
 }
 
 // get categories details from the complete dataset

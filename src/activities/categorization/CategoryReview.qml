@@ -38,10 +38,12 @@ Item {
     property alias leftZoneModel: leftZoneModel
     property alias leftZone: leftZone
     property alias rightZone: rightZone
+    property alias middleZone: middleZone
     property alias rightZoneModel: rightZoneModel
     property alias leftScreen: leftScreen
     property alias middleScreen: middleScreen
     property alias rightScreen: rightScreen
+    property bool middle: true
     anchors.fill: parent
 
     Loader {
@@ -57,6 +59,10 @@ Item {
         id: rightZone
     }
 
+    ListModel {
+        id: middleZone
+    }
+
     Image {
         id: categoryBackground
         source: "qrc:/gcompris/src/activities/categorization/resource/background.svg"
@@ -66,6 +72,7 @@ Item {
         Zone {
             id:leftZoneModel
             repeater.model: leftZone
+            spacing: 15
             x: 0
         }
 
@@ -82,6 +89,7 @@ Item {
             id: rightZoneModel
             x: leftScreen.width + middleScreen.width
             anchors.top: categoryBackground.top
+            spacing: 15
             anchors.topMargin: items.mode === "easy" ? 0.2 * categoryBackground.height : ''
             repeater.model: rightZone
         }
@@ -125,14 +133,17 @@ Item {
 
         Zone {
             id: options
+            spacing: 0.012 * middleScreen.width
             anchors {
-                left: leftZoneModel.right
-                right: rightZoneModel.left
+                left: leftScreen.right
+                right: rightScreen.left
                 top: parent.top
                 topMargin: 0.05 * parent.height
                 bottom: categoryBackground.bottom
                 leftMargin: 0.015 * middleScreen.width
             }
+            repeater.model: middleZone
+            
         }
 
         GCText {

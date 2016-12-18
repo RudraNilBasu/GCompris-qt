@@ -28,19 +28,22 @@ Flow {
     id: zoneFlow
     width: parent.width/3.2
     height: parent.height
-    spacing: 15
     property alias repeater: repeater
+    property alias image: image
     Repeater {
         id: repeater
+        property alias image: image
         Item {
             id: item
             width: middleScreen.width*0.32
             height: categoryBackground.height * 0.2
             opacity: 1
+            property alias image: image
             Image {
                 id: image
                 width: middleScreen.width*0.28
                 height: categoryBackground.height * 0.15
+                source: name
                 MultiPointTouchArea {
                     id: dragArea
                     anchors.fill: parent
@@ -77,20 +80,19 @@ Flow {
                             return;
                         //Drag.drop();
                         if(leftAreaContainsDrag) {
+                            middle = false
                             print("left")
                             leftZone.append({ "name": image.source.toString(),"droppedZone": "left" })
                             image.source = ""
-                            leftZoneRepeater.model = leftZone
-                            repeater.model.droppedPosition = "left"
                         }
                         else if(rightAreaContainsDrag) { 
+                            middle = false
                             print("right")
-                            rightZone.append({"name": image.source.toString(),"droppedZone": right})
+                            rightZone.append({"name": image.source.toString(),"droppedZone": right,"isRight": items.middleZone[image.source.toString()].isRight})
                             image.source = ""
-                            rightZoneRepeater.model = rightZone
-                            repeater.model.droppedPosition = "right"     
                         }
                         else {
+                            middle = true
                             print("middle")
                             repeater.model.droppedPosition = "middle"
                         }
@@ -99,7 +101,6 @@ Flow {
                         lastX = point1.x
                         lastY = point1.y
                     }
-                }
                 function isDragInLeftArea(leftAreaRightBorderPos, elementRightPos) {
                     if(elementRightPos <= leftAreaRightBorderPos)
                         return true;
@@ -111,7 +112,7 @@ Flow {
                         return true;
                     else
                         return false;
-                }
+                }}
             }
         }
     }

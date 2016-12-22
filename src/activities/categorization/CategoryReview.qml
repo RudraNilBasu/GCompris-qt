@@ -29,17 +29,14 @@ Item {
     property alias score: score
     property alias categoryDataset: categoryDataset
     property alias instructionBox: instructionBox
-    property alias options: options
     property bool isDropped: true
     property bool leftAreaContainsDrag: false
     property bool rightAreaContainsDrag: false
     property bool started: rootItem.opacity == 1
     property bool horizontalLayout: categoryBackground.width > categoryBackground.height
-    property alias leftZoneModel: leftZoneModel
-    property alias leftZone: leftZone
-    property alias rightZone: rightZone
-    property alias middleZone: middleZone
-    property alias rightZoneModel: rightZoneModel
+    property alias leftZone: leftZone.model
+    property alias rightZone: rightZone.model
+    property alias middleZone: middleZone.model
     property alias leftScreen: leftScreen
     property alias middleScreen: middleScreen
     property alias rightScreen: rightScreen
@@ -51,18 +48,6 @@ Item {
         asynchronous: false
     }
 
-    ListModel {
-        id: leftZone
-    }
-
-    ListModel {
-        id: rightZone
-    }
-
-    ListModel {
-        id: middleZone
-    }
-
     Image {
         id: categoryBackground
         source: "qrc:/gcompris/src/activities/categorization/resource/background.svg"
@@ -70,8 +55,7 @@ Item {
         sourceSize.width:parent.width
 
         Zone {
-            id:leftZoneModel
-            repeater.model: leftZone
+            id:leftZone
             spacing: 15
             x: 0
         }
@@ -86,12 +70,11 @@ Item {
         }
 
         Zone {
-            id: rightZoneModel
+            id: rightZone
             x: leftScreen.width + middleScreen.width
             anchors.top: categoryBackground.top
             spacing: 15
             anchors.topMargin: items.mode === "easy" ? 0.2 * categoryBackground.height : ''
-            repeater.model: rightZone
         }
 
         Rectangle {
@@ -132,7 +115,7 @@ Item {
         }
 
         Zone {
-            id: options
+            id: middleZone
             spacing: 0.012 * middleScreen.width
             anchors {
                 left: leftScreen.right
@@ -142,8 +125,6 @@ Item {
                 bottom: categoryBackground.bottom
                 leftMargin: 0.015 * middleScreen.width
             }
-            repeater.model: middleZone
-            
         }
 
         GCText {
@@ -163,21 +144,21 @@ Item {
         Image {
             id:categoryimage
             source: items.details ? items.details[bar.level-1].image : ""
-            width: horizontalLayout ? rightZoneModel.width * 0.35 : rightZoneModel.width * 0.35
-            height: horizontalLayout ? rightZoneModel.height * 0.18 : rightZoneModel.height * 0.15
+            width: horizontalLayout ? rightZone.width * 0.35 : rightZone.width * 0.35
+            height: horizontalLayout ? rightZone.height * 0.18 : rightZone.height * 0.15
             y: 0.015*parent.height
             visible: items.categoryImageChecked
             anchors {
                 left: middleScreen.right
-                leftMargin: 0.15 * rightZoneModel.width
+                leftMargin: 0.15 * rightZone.width
             }
         }
 
         BarButton {
             id: validate
             source: "qrc:/gcompris/src/core/resource/bar_ok.svg"
-            width: horizontalLayout ? rightZoneModel.width * 0.20 : rightZoneModel.width * 0.35
-            height: horizontalLayout ? rightZoneModel.width * 0.20 : rightZoneModel.width * 0.35
+            width: horizontalLayout ? rightZone.width * 0.20 : rightZone.width * 0.35
+            height: horizontalLayout ? rightZone.width * 0.20 : rightZone.width * 0.35
             y: parent.height*0.8
             anchors{
                 rightMargin: 14 * ApplicationInfo.ratio
@@ -194,12 +175,12 @@ Item {
 
         DropArea {
             id: rightArea
-            anchors.fill: rightZoneModel
+            anchors.fill: rightZone
         }
 
         DropArea {
             id: leftArea
-            anchors.fill: leftZoneModel
+            anchors.fill: leftZone
         }
 
         DialogHelp {

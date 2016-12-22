@@ -29,16 +29,20 @@ Flow {
     width: parent.width/3.2
     height: parent.height
     property alias repeater: repeater
-    property alias image: image
+    property alias model: zoneModel
+
+    ListModel {
+        id: zoneModel
+    }
+
     Repeater {
         id: repeater
-        property alias image: image
+        model: zoneModel
         Item {
             id: item
             width: middleScreen.width*0.32
             height: categoryBackground.height * 0.2
             opacity: 1
-            property alias image: image
             Image {
                 id: image
                 width: middleScreen.width*0.28
@@ -52,16 +56,22 @@ Flow {
                     property real positionY
                     property real lastX
                     property real lastY
-                    property string droppedPosition: "middle"
                     property bool isRight: isRight
-                    
+                    property string currPosition: "middle"
+
                     onPressed: {
                         items.instructionsChecked = false
                         positionX = point1.x
                         positionY = point1.y
-                        
+                        var imagePos = image.mapToItem(null,0,0)
+                        if(isDragInLeftArea(leftScreen.width, imagePos.x + parent.width))
+                            currPosition = "left"
+                        else if(isDragInRightArea(middleScreen.width + leftScreen.width,imagePos.x))
+                            currPosition = "right"
+                        else
+                            currPosition = "middle"
                     }
-                    
+
                     onUpdated: {
                         var moveX = point1.x - positionX
                         var moveY = point1.y - positionY
@@ -71,33 +81,36 @@ Flow {
                         leftAreaContainsDrag = isDragInLeftArea(leftScreen.width, imagePos.x + parent.width)
                         rightAreaContainsDrag = isDragInRightArea(middleScreen.width + leftScreen.width,imagePos.x)
                         lastX = 0, lastY = 0
-                        
-                        
                     }
-                    
-                    onReleased: {   
+
+                    onReleased: {
                         if(lastX == point1.x && lastY == point1.y)
                             return;
                         //Drag.drop();
                         if(leftAreaContainsDrag) {
                             middle = false
-                            print("left")
-                            leftZone.append({ "name": image.source.toString(),"droppedZone": "left" })
+                            if(currPosition === "middle")
+                                items.categoryReview.leftZone.append({ "name": image.source.toString(),"droppedZone": "left" })
+                            else if(currPosition === "right") {
+                                items.categoryReview.leftZone.append({ "name": image.source.toString(),"droppedZone": "left" })
+                                items.categoryReview.rightZone.remove(index)
+                            }
                             image.source = ""
                         }
-                        else if(rightAreaContainsDrag) { 
+                        else if(rightAreaContainsDrag) {
                             middle = false
-                            print("right")
-                            rightZone.append({"name": image.source.toString(),"droppedZone": right,"isRight": items.middleZone[image.source.toString()].isRight})
+                            if(currPosition === "middle")
+                                items.categoryReview.rightZone.append({ "name": image.source.toString(),"droppedZone": "right" })
+                            else if(currPosition === "left") {
+                                items.categoryReview.rightZone.append({ "name": image.source.toString(),"droppedZone": "right" })
+                                items.categoryReview.leftZone.remove(index)
+                            }
                             image.source = ""
                         }
                         else {
                             middle = true
-                            print("middle")
-                            repeater.model.droppedPosition = "middle"
                         }
-                        leftAreaContainsDrag = false
-                        rightAreaContainsDrag = false
+                        Activity.setValues()
                         lastX = point1.x
                         lastY = point1.y
                     }

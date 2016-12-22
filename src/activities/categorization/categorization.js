@@ -138,7 +138,7 @@ function initLevel() {
     else
         items.instructionsChecked = false
     items.bar.level = currentLevel + 1
-    items.categoryReview.score.currentSubLevel = 0;
+    items.categoryReview.score.currentSubLevel = 0
     getCategoryLevels(index);
     numberOfLevel = items.details.length;
     items.categoryReview.leftZone.clear();
@@ -166,26 +166,39 @@ function previousLevel() {
 
 // Checks if all the items are dragged and dropped in the correct or incorrect area.
 function allPlaced() {
-  items.categoryReview.score.currentSubLevel = 0;
-  for(var i = 0 ; i < items.categoryReview.options.repeater.count; ++i) {
-      var item = items.categoryReview.options.repeater.itemAt(i)
-      if((item.droppedPosition === "right" && item.isRight) || (item.droppedPosition === "left" && !item.isRight)) {
-          items.categoryReview.score.currentSubLevel ++;
+    items.categoryReview.score.currentSubLevel = 0;
+    for(var i = 0 ; i < items.categoryReview.leftZone.count; ++i) {
+        for(var j = 0; j < items.categoryReview.middleZone.count; j++) {
+            var droppedZoneItem = items.categoryReview.leftZone.get(i)
+            var middleZoneItem = items.categoryReview.middleZone.get(j)
+            if(middleZoneItem.name === droppedZoneItem.name &&
+                ((droppedZoneItem.droppedZone === "right" && middleZoneItem.isRight)
+                || (droppedZoneItem.droppedZone === "left" && !middleZoneItem.isRight)))
+                items.categoryReview.score.currentSubLevel ++
         }
     }
-    if(items.categoryReview.score.currentSubLevel == items.categoryReview.options.repeater.count) {
+    for(var i = 0 ; i < items.categoryReview.rightZone.count; ++i) {
+        for(var j = 0; j < items.categoryReview.middleZone.count; j++) {
+            var droppedZoneItem = items.categoryReview.rightZone.get(i)
+            var middleZoneItem = items.categoryReview.middleZone.get(j)
+            if(middleZoneItem.name === droppedZoneItem.name &&
+                ((droppedZoneItem.droppedZone === "right" && middleZoneItem.isRight)
+                || (droppedZoneItem.droppedZone === "left" && !middleZoneItem.isRight)))
+                items.categoryReview.score.currentSubLevel ++
+        }
+    }
+    if(items.categoryReview.score.currentSubLevel == items.categoryReview.middleZone.count) {
         items.bonus.good("flower");
     }
-    else {
+    else
         items.bonus.bad("flower");
-    }
 }
 
 // Save properties to lessons
 function getCategoryLevels() {
     var randomGood = 0;
     var randomBad = 0;
-
+    items.categoryReview.middleZone.clear()
     /* If easy or medium mode is selected, store the details of levels of category of that respective index in items.details. */
     if(items.mode !== "expert") {
         items.details = lessons[index].map(function(ele) {
@@ -245,7 +258,7 @@ function getCategoryLevels() {
     for(var i = 0; i < table.length; i++) {
         items.categoryReview.middleZone.append({"isRight":table[i].isRight,"name": table[i].name})
     }
-    items.categoryReview.score.numberOfSubLevels = items.categoryReview.options.repeater.count
+    items.categoryReview.score.numberOfSubLevels = items.categoryReview.middleZone.count
 }
 
 // get categories details from the complete dataset
@@ -262,10 +275,15 @@ function getCategoryModel(dataset) {
 }
 
 // get all the content (levels) from the category in dataset
-function getAllLessons(dataset){
+function getAllLessons(dataset) {
     var lessons = []
     for(var c = 0; c < dataset.length; c++) {
         lessons.push(dataset[c].levels[0].content)
     }
     return lessons
+}
+
+function setValues() {
+    items.categoryReview.leftAreaContainsDrag = false
+    items.categoryReview.rightAreaContainsDrag = false
 }

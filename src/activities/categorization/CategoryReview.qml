@@ -40,7 +40,6 @@ Item {
     property alias leftScreen: leftScreen
     property alias middleScreen: middleScreen
     property alias rightScreen: rightScreen
-    property bool middle: true
     anchors.fill: parent
 
     Loader {
@@ -58,6 +57,7 @@ Item {
             id:leftZone
             spacing: 15
             x: 0
+            z: 2
         }
 
         Rectangle {
@@ -72,6 +72,7 @@ Item {
         Zone {
             id: rightZone
             x: leftScreen.width + middleScreen.width
+            z: 2
             anchors.top: categoryBackground.top
             spacing: 15
             anchors.topMargin: items.mode === "easy" ? 0.2 * categoryBackground.height : ''

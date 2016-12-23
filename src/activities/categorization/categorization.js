@@ -287,3 +287,16 @@ function setValues() {
     items.categoryReview.leftAreaContainsDrag = false
     items.categoryReview.rightAreaContainsDrag = false
 }
+
+function isDragInLeftArea(leftAreaRightBorderPos, elementRightPos) {
+    if(elementRightPos <= leftAreaRightBorderPos)
+        return true;
+    else
+        return false;
+}
+function isDragInRightArea(rightAreaLeftBorderPos, elementLeftPos) {
+    if((rightAreaLeftBorderPos <= elementLeftPos))
+        return true;
+    else
+        return false;
+}

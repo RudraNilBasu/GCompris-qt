@@ -58,16 +58,21 @@ Flow {
                     property real lastY
                     property bool isRight: isRight
                     property string currPosition: "middle"
+                    property string initialPosition: "middle"
 
                     onPressed: {
                         items.instructionsChecked = false
                         positionX = point1.x
                         positionY = point1.y
                         var imagePos = image.mapToItem(null,0,0)
-                        if(isDragInLeftArea(leftScreen.width, imagePos.x + parent.width))
+                        if(Activity.isDragInLeftArea(leftScreen.width, imagePos.x + parent.width)) {
                             currPosition = "left"
-                        else if(isDragInRightArea(middleScreen.width + leftScreen.width,imagePos.x))
+                            initialPosition = "left"
+                        }
+                        else if(Activity.isDragInRightArea(middleScreen.width + leftScreen.width,imagePos.x)) {
                             currPosition = "right"
+                            initialPosition = "right"
+                        }
                         else
                             currPosition = "middle"
                     }
@@ -78,8 +83,8 @@ Flow {
                         parent.x = parent.x + moveX
                         parent.y = parent.y + moveY
                         var imagePos = image.mapToItem(null,0,0)
-                        leftAreaContainsDrag = isDragInLeftArea(leftScreen.width, imagePos.x + parent.width)
-                        rightAreaContainsDrag = isDragInRightArea(middleScreen.width + leftScreen.width,imagePos.x)
+                        leftAreaContainsDrag = Activity.isDragInLeftArea(leftScreen.width, imagePos.x + parent.width)
+                        rightAreaContainsDrag = Activity.isDragInRightArea(middleScreen.width + leftScreen.width,imagePos.x)
                         lastX = 0, lastY = 0
                     }
 
@@ -88,44 +93,36 @@ Flow {
                             return;
                         //Drag.drop();
                         if(leftAreaContainsDrag) {
-                            middle = false
-                            if(currPosition === "middle")
+                            if(initialPosition === "middle")
                                 items.categoryReview.leftZone.append({ "name": image.source.toString(),"droppedZone": "left" })
-                            else if(currPosition === "right") {
+                            else if(currPosition === "right" || currPosition === "middle" && items.categoryReview.rightZone.get(index).droppedZone != "right") {
                                 items.categoryReview.leftZone.append({ "name": image.source.toString(),"droppedZone": "left" })
                                 items.categoryReview.rightZone.remove(index)
                             }
-                            image.source = ""
-                        }
-                        else if(rightAreaContainsDrag) {
-                            middle = false
-                            if(currPosition === "middle")
-                                items.categoryReview.rightZone.append({ "name": image.source.toString(),"droppedZone": "right" })
-                            else if(currPosition === "left") {
-                                items.categoryReview.rightZone.append({ "name": image.source.toString(),"droppedZone": "right" })
+                            else {
+                                items.categoryReview.leftZone.append({ "name": image.source.toString(),"droppedZone": "left" })
                                 items.categoryReview.leftZone.remove(index)
                             }
                             image.source = ""
                         }
-                        else {
-                            middle = true
+                        else if(rightAreaContainsDrag) {
+                            if(initialPosition === "middle")
+                                items.categoryReview.rightZone.append({ "name": image.source.toString(),"droppedZone": "right" })
+                            else if(currPosition === "left" || currPosition === "middle" && items.categoryReview.rightZone.get(index).droppedZone != "right") {
+                                items.categoryReview.rightZone.append({ "name": image.source.toString(),"droppedZone": "right" })
+                                items.categoryReview.leftZone.remove(index)
+                            }
+                            else if(currPosition === "right" || currPosition === "middle") {
+                                items.categoryReview.rightZone.append({ "name": image.source.toString(),"droppedZone": "right" })
+                                items.categoryReview.rightZone.remove(index)
+                            }
+                            image.source = ""
                         }
                         Activity.setValues()
                         lastX = point1.x
                         lastY = point1.y
                     }
-                function isDragInLeftArea(leftAreaRightBorderPos, elementRightPos) {
-                    if(elementRightPos <= leftAreaRightBorderPos)
-                        return true;
-                    else
-                        return false;
                 }
-                function isDragInRightArea(rightAreaLeftBorderPos, elementLeftPos) {
-                    if((rightAreaLeftBorderPos <= elementLeftPos))
-                        return true;
-                    else
-                        return false;
-                }}
             }
         }
     }

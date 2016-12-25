@@ -36,7 +36,7 @@ QtObject{
                     "maxNumberOfBad": 6,
                     "prefix": "qrc:/gcompris/data/words/",
                     "levelImages": [
-                        { 
+                        {
                             "food/applepie.jpg":["food"],
                             "food/bananaNutBread.jpg":["food"],
                             "food/biryani.jpg":["food"],
@@ -117,7 +117,7 @@ QtObject{
                             "insects/insect8.jpg":["insects"]
                         }
                     ]
-                },  
+                },
                 {
                     "tags": ["food"],
                     "instructions": qsTr("Place the FOOD ITEMS to the right and other objects to the left"),

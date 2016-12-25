@@ -140,7 +140,7 @@ QtObject{
                             "food/milk.jpg":["food"],
                             "insects/insect5.jpg":["insects"]
                         }
-                    ] 
+                    ]
                 },
                 {
                     "tags": ["birds"],

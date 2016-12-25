@@ -350,7 +350,7 @@ QtObject{
                             "shapes/rectangle_led.svg": ["rectangle"],
                             "shapes/slate.svg": ["rectangle"],
                             "shapes/rsquare.svg": ["square"],
-                            "shapes/rainbowsquare.svg": ["square"] 
+                            "shapes/rainbowsquare.svg": ["square"]
                         }
                     ]
                 },

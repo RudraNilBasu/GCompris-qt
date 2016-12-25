@@ -168,7 +168,7 @@ QtObject{
                             "vegetables/spinach.jpg": ["vegetables"]
                         }
                     ]
-                }, 
+                },
                 {
                     "tags": ["householdGoods"],
                     "instructions": qsTr("Place the HOUSEHOLD GOODS to the right and other objects to the left"),
@@ -288,7 +288,7 @@ QtObject{
                             "nature/nature12.jpg": ["nature"]
                         }
                     ]
-                }, 
+                },
                 {
                     "tags": ["householdGoods"],
                     "instructions": qsTr("Place the HOUSEHOLD GOODS to the right and other objects to the left"),

@@ -59,6 +59,7 @@ Flow {
                     property bool isRight: isRight
                     property string currPosition: "middle"
                     property string initialPosition: "middle"
+                    property string imageSource: image.source.toString()
 
                     onPressed: {
                         items.instructionsChecked = false
@@ -94,28 +95,20 @@ Flow {
                         //Drag.drop();
                         if(leftAreaContainsDrag) {
                             if(initialPosition === "middle")
-                                items.categoryReview.leftZone.append({ "name": image.source.toString(),"droppedZone": "left" })
-                            else if(currPosition === "right" || currPosition === "middle" && items.categoryReview.rightZone.get(index).droppedZone != "right") {
-                                items.categoryReview.leftZone.append({ "name": image.source.toString(),"droppedZone": "left" })
-                                items.categoryReview.rightZone.remove(index)
-                            }
-                            else {
-                                items.categoryReview.leftZone.append({ "name": image.source.toString(),"droppedZone": "left" })
-                                items.categoryReview.leftZone.remove(index)
-                            }
+                                Activity.dropControl("middle","left",imageSource,index)
+                            else if(currPosition === "right" || currPosition === "middle")
+                                Activity.dropControl("right","left",imageSource,index)
+                            else
+                                Activity.dropControl("left","left",imageSource,index)
                             image.source = ""
                         }
                         else if(rightAreaContainsDrag) {
                             if(initialPosition === "middle")
-                                items.categoryReview.rightZone.append({ "name": image.source.toString(),"droppedZone": "right" })
-                            else if(currPosition === "left" || currPosition === "middle" && items.categoryReview.rightZone.get(index).droppedZone != "right") {
-                                items.categoryReview.rightZone.append({ "name": image.source.toString(),"droppedZone": "right" })
-                                items.categoryReview.leftZone.remove(index)
-                            }
-                            else if(currPosition === "right" || currPosition === "middle") {
-                                items.categoryReview.rightZone.append({ "name": image.source.toString(),"droppedZone": "right" })
-                                items.categoryReview.rightZone.remove(index)
-                            }
+                                Activity.dropControl("middle","right",imageSource,index)
+                            else if(currPosition === "left" || currPosition === "middle")
+                                Activity.dropControl("left","right",imageSource,index)
+                            else
+                                Activity.dropControl("right","right",imageSource,index)
                             image.source = ""
                         }
                         Activity.setValues()

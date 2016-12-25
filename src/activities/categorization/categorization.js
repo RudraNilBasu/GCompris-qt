@@ -300,3 +300,26 @@ function isDragInRightArea(rightAreaLeftBorderPos, elementLeftPos) {
     else
         return false;
 }
+
+function dropControl(sourcePosition,destinationPosition,image,index) {
+    if(sourcePosition == "middle" && destinationPosition == "left")
+        items.categoryReview.leftZone.append({ "name": image,"droppedZone": "left" })
+    else if(sourcePosition == "right" && destinationPosition == "left") {
+        items.categoryReview.leftZone.append({ "name": image,"droppedZone": "left" })
+        items.categoryReview.rightZone.remove(index)
+    }
+    else if(sourcePosition == "left" && destinationPosition == "left") {
+        items.categoryReview.leftZone.append({ "name": image,"droppedZone": "left" })
+        items.categoryReview.leftZone.remove(index)
+    }
+    else if(sourcePosition == "middle" && destinationPosition == "right")
+        items.categoryReview.rightZone.append({ "name": image,"droppedZone": "right" })
+    else if(sourcePosition == "left" && destinationPosition == "right") {
+        items.categoryReview.rightZone.append({ "name": image,"droppedZone": "right" })
+        items.categoryReview.leftZone.remove(index)
+    }
+    else if(sourcePosition == "right" && destinationPosition == "right") {
+        items.categoryReview.rightZone.append({ "name": image,"droppedZone": "left" })
+        items.categoryReview.rightZone.remove(index)
+    }
+}

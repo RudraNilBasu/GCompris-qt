@@ -120,7 +120,7 @@ QtObject{
                             "food/icecream.jpg":["food"],
                         }
                     ]
-                },         
+                },
                 {
                     "tags": ["fruits"],
                     "instructions": qsTr("Place the FRUITS to the right and other objects to the left"),

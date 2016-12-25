@@ -117,7 +117,7 @@ QtObject{
                             "others/electricfan.jpg":["others"]
                         }
                     ]
-                },   
+                },
                 {
                     "tags": ["nature"],
                     "instructions": qsTr("Place the NATURE images to the right and other objects to the left"),
@@ -174,7 +174,7 @@ QtObject{
                             "others/electricfan.jpg":["others"]
                         }
                     ]
-                }, 
+                },
                 {
                     "tags": ["nature"],
                     "instructions": qsTr("Place the NATURE images to the right and other objects to the left"),

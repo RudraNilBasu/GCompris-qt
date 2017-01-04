@@ -20,9 +20,12 @@
  *   along with this program; if not, see <http://www.gnu.org/licenses/>.
  */
 import QtQuick 2.1
+import GCompris 1.0
+import QtQuick.Window 2.0
 
 import "../../core"
 import "ascending_order.js" as Activity
+import "qrc:/gcompris/src/core/core.js" as Core
 
 ActivityBase {
     id: activity
@@ -30,10 +33,12 @@ ActivityBase {
     onStart: focus = true
     onStop: {}
 
-    pageComponent: Rectangle {
+
+    pageComponent: Image {
         id: background
         anchors.fill: parent
-        color: "#ABCDEF"
+        fillMode: Image.PreserveAspectCrop
+        source: "resource/background.svg"
         signal start
         signal stop
 
@@ -51,39 +56,44 @@ ActivityBase {
             property alias bonus: bonus
             property alias grids: grids
             property alias boxes: boxes
+            property alias ansText: ansText
+            property alias ok: ok
         }
 
         onStart: { Activity.start(items) }
         onStop: { Activity.stop() }
 
         GCText {
-            anchors.centerIn: parent
+            id: ansText
+            anchors {
+                horizontalCenter: parent.horizontalCenter
+            }
             text: ""
-            fontSize: largeSize
+            font.pixelSize: 40
         }
 
         Grid {
             id: grids
-            rows: 1
             spacing: 12
+            anchors {
+                horizontalCenter: parent.horizontalCenter
+                verticalCenter: parent.verticalCenter
+            }
             Repeater {
                 id: boxes
                 model: 4
+                property int scale_factor: Screen.pixelDensity/default_pix_density
                 Rectangle {
                     property int imageX: 0
-                    width: 360/2
-                    height: 360/2
+                    width: 360/4 * ApplicationInfo.ratio
+                    height: 360/4 * ApplicationInfo.ratio
                     radius: 20
-//                    color: "blue"
                     property int clicked:0
 
                     MouseArea {
                         anchors.fill: parent
                         onClicked :{
-                            //if(parent.clicked===0) {
-                                Activity.check(numText.text)
-                            //    parent.clicked++
-                            //}
+                            Activity.check(numText.text)
                         }
                     }
 
@@ -96,9 +106,25 @@ ActivityBase {
             }
         }
 
+
+
         DialogHelp {
             id: dialogHelp
             onClose: home()
+        }
+
+        BarButton {
+          id: ok
+          source: "qrc:/gcompris/src/core/resource/bar_ok.svg";
+          sourceSize.width: 75 * ApplicationInfo.ratio
+          visible: false
+          anchors {
+              right: parent.right
+              bottom: parent.bottom
+              bottomMargin: 10 * ApplicationInfo.ratio
+              rightMargin: 10 * ApplicationInfo.ratio
+          }
+          onClicked: Activity.retry()
         }
 
         Bar {

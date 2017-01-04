@@ -23,13 +23,12 @@ ActivityInfo {
   icon: "ascending_order/ascending_order.svg"
   author: "Rudra Nil Basu &lt;rudra.nil.basu.1996@gmail.com&gt;"
   demo: false
-  title: "Ascending Order"
-  description: "Arrange the given numbers in ascending order"
-  //intro: "put here in comment the text for the intro voice"
-  goal: "arranging numbers in ascending order"
-  prerequisite: "numbers"
-  manual: "You are provided with few numbers. Click on the smallest number first, second smallest number second, and the largest number in the last"
-  credit: ""
-  section: "math"
-//  createdInVersion: 1
+  title: qsTr("Ascending Order")
+  description: qsTr("Arrange the given numbers in ascending order")
+  //intro: "click on the numbers in ascending order"
+  goal: qsTr("arranging numbers in ascending order")
+  prerequisite: qsTr("Ordering of Numbers")
+  manual: qsTr("You are provided with few numbers. Click on the smallest number first, second smallest number second, and the largest number in the last")
+  credit: "openclipart.org"
+  section: qsTr("math")
 }

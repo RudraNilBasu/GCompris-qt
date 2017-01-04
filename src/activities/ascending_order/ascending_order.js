@@ -33,7 +33,6 @@ var entered=[] // the numbers entered by the user
 
 var initColor = "#0000FF"
 var visitedColor="#7CFC00"
-var wrongColor="#FF0000"
 
 var numEntered // the number of numbers entered by the user
 
@@ -49,12 +48,12 @@ function stop() {
 function initLevel() {
     items.bar.level = currentLevel + 1
     numEntered=0
+    items.ansText.text=""
     initGrids()
 }
 
 function initGrids() {
     items.boxes.model = 2*(items.bar.level)+1
-    items.grids.columns = items.boxes.model
 
     generateRandomNumbers()
 
@@ -78,7 +77,6 @@ function generateRandomNumbers() {
             continue;
         }
         num[num.length]=randomNumber
-//        hash[hash.length]=0
     }
 }
 
@@ -102,11 +100,15 @@ function check(currentNum) {
             if(hash[i]===1) {
                 continue
             } else {
+
                 items.boxes.itemAt(i).color=visitedColor
                 hash[i]=1
                 entered[numEntered++]=currentNum
                 if(numEntered===num.length) {
+                    items.ansText.text=items.ansText.text.concat(currentNum.toString(), " .")
                     result()
+                } else {
+                    items.ansText.text=items.ansText.text.concat(currentNum.toString(), ", ")
                 }
             }
         }
@@ -116,12 +118,38 @@ function check(currentNum) {
 function result() {
     for(var i=0;i<entered.length-1;i++) {
         if(Number(entered[i])>Number(entered[i+1])) {
-//          WRONG
+            //WRONG answer
+            items.ok.visible=true
+            items.ansText.text=items.ansText.text.concat("\n")
+            printSorted()
             items.bonus.bad("lion")
-            initLevel()
             return
         }
     }
-    // CORRECT
+    // CORRECT answer
     items.bonus.good("lion")
+}
+
+function printSorted() {
+    for(var i=0;i<entered.length-1;i++) {
+        for(var j=0;j<entered.length-i-1;j++) {
+            if(Number(entered[j]>Number(entered[j+1]))) {
+                var temp=entered[j+1];
+                entered[j+1]=entered[j]
+                entered[j]=temp
+            }
+        }
+    }
+    for(i=0;i<entered.length;i++) {
+        if(i!=entered.length-1) {
+            items.ansText.text=items.ansText.text.concat(entered[i], ", ");
+        } else {
+            items.ansText.text=items.ansText.text.concat(entered[i], " .");
+        }
+    }
+}
+
+function retry() {
+    items.ok.visible=false
+    initLevel()
 }
